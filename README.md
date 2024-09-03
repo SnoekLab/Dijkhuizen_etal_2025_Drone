@@ -5,8 +5,8 @@ Index<br>
 Name                                  Description<br>
 Extract_and_combine_drone_data_annotated.R        Extract the different plots from total image and output height, color and coordinates in a dataframe. Outputs in 4 seperate dataframes for Sativa and Serriola day 1 and 2.<br>
 Extr_phe_per_plot_annotated.R                     Takes dataframe from previous script and extracts the phenotypes, color, color ratios and height.<br>
-cor_gwas_massive_clus_sat.R                       Perform teh GWAS on all sativa data.
-clus_sat_full_manhat_manhat.R                     Generate the clustering on all traits
+cor_gwas_massive_clus_sativa_all_snps.R                       Perform the GWAS on all sativa data.<br>
+clus_sat_full_manhat_manhat.R                     Generate the clustering on all traits<br>
 
 -<br>
 -<br>
