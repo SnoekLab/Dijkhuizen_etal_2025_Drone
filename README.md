@@ -19,8 +19,8 @@ Fig4.R                                           Script to generate figure 4<br>
 Fig5.R                                           Script to generate figure 5<br>
 Fig6.R                                           Script to generate figure 6<br>
 <br>
-Supplemental_Figure6                             Script to generate figure <br>
-Supplemental_figure7                             Script to generate figure
+Supp_fig6                                        Script to generate supplemental figure comparing height traits<br>
+Supp_fig8                                        Script to generate supplemental figure 8. <br>
 
 # Issues to resolve: <br>
 Not all scripts load in the data the exact same way. Some use Basten's file path some use Rens'. <br>
