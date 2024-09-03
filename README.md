@@ -10,7 +10,6 @@ clus_sat_full_manhat_manhat.R                     Generate the clustering on all
 
 -<br>
 -<br>
-Several missing scripts  to be filled in later<br>
 -<br>
 -<br>
 Fig1.R                                           Script to generate figure 1<br>
@@ -22,3 +21,9 @@ Fig6.R                                           Script to generate figure 6<br>
 <br>
 Supplemental_Figure6                             Script to generate figure <br>
 Supplemental_figure7                             Script to generate figure
+
+# Issues to resolve: <br>
+Not all scripts load in the data the exact same way. Some use Basten's file path some use Rens'. <br>
+Fig1 and 6 require the actual image data, which we don't include because it is enermous <br>
+Proposed solution: Don't include Fig1.R because it is just 6 fotos and for Fig 6 only include the graph. <br>
+Fig3 contains multiple versions for fig3.
