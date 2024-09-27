@@ -10,8 +10,7 @@ Inputs: "obj_metawco.out" a metadata file containing the location data of all pl
 "Tiff_files_11/11_GCP.shp" points for georeferencing. <br>
 Outputs: "obj_all.pl_sat_rep1_1106_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_1106_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out" <br>
 Dataframes containing for every pixel the RGB values, the MSP values, the height, and what accession they belong to. @Basten
-$${\color{red}@Basten, we don't actually deliver any of the tif files. Also the script actually only ouputs day 2506. To switch to 1106 we need to manually change some things.}$$
-<code style="color : red"> @Basten, we don't actually deliver any of the tif files. Also the script actually only ouputs day 2506. To switch to 1106 we need to manually change some things.</code>
+<code style="color:red"> @Basten, we don't actually deliver any of the tif files. Also the script actually only ouputs day 2506. To switch to 1106 we need to manually change some things</code>
 
 Extract the different plots from total image and output height, color and coordinates in a dataframe. Outputs in 4 seperate dataframes for Sativa and Serriola day 1 and 2.<br>
 
