@@ -5,18 +5,33 @@ Index<br>
 Name &<br>
 Description <br>
 *Extract_and_combine_drone_data_annotated.R*
+Extract the different plots from total image and output height, color and coordinates in a dataframe. Outputs in 4 seperate dataframes for Sativa and Serriola day 1 and 2.<br>
 Inputs: "obj_metawco.out" a metadata file containing the location data of all plots, "246f746c-f8e2-4bcf-beb9-6051bc535812_RGB_modified_ref_points.tif" file containing the rgb values, <br>
 "246f746c-f8e2-4bcf-beb9-6051bc535812_DSM_modified.tif" file containing the plant heights, "cebe7014-1426-4a5a-a78f-14d4559875c4_MSP_modified.tif" file containing the multispectral values, <br>
 "Tiff_files_11/11_GCP.shp" points for georeferencing. <br>
 Outputs: "obj_all.pl_sat_rep1_1106_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_1106_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out" <br>
-Dataframes containing for every pixel the RGB values, the MSP values, the height, and what accession they belong to. @Basten
-<code style="color:red"> @Basten, we don't actually deliver any of the tif files. Also the script actually only ouputs day 2506. To switch to 1106 we need to manually change some things</code>
+Dataframes containing for every pixel the RGB values, the MSP values, the height, and what accession they belong to. <br>
+<code style="color:red">@Basten, we don't actually deliver any of the tif files. Also the script actually only ouputs day 2506. To switch to 1106 we need to manually change some things</code>
 
-Extract the different plots from total image and output height, color and coordinates in a dataframe. Outputs in 4 seperate dataframes for Sativa and Serriola day 1 and 2.<br>
+*Extr_phe_per_plot_annotated.R*
+Takes dataframe from previous script and extracts the phenotypes, color, color ratios and height.<br>
+inputs: "obj_all.pl_sat_rep2_1106_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out" <br>
+Dataframes containing for every pixel the RGB values, the MSP values, the height, and what accession they belong to. <br>
+Outputs: "obj_phe.sat1.1106.out", "obj_phe.sat2.1106.out", "obj_phe.sat1.2506.out", obj_phe.sat2.2506.out, dataframes containing the phenotypes of all accessions.
 
-Extr_phe_per_plot_annotated.R                     Takes dataframe from previous script and extracts the phenotypes, color, color ratios and height.<br>
-cor_gwas_massive_clus_sativa_all_snps.R                       Perform the GWAS on all sativa data.<br>
-clus_sat_full_manhat_manhat.R                     Generate the clustering on all traits<br>
+<code style="color:red">The script to combine both reps into one is still missing.</code>
+
+*cor_gwas_massive_clus_sativa_all_snps.R*
+Perform the GWAS on all sativa data.<br>
+Inputs: "phe.sat.mean.1106.2506.diff.include.rat.out" dataframe containing all the phenotypes we perform GWAS on, "sat.accessions.out" list of all the accesions that we use, <br> "obj_all.ALTREF.out" SNPmap, "cov_new_snps.out" kinship matrix.
+Outputs: The GWAS results of every singel traits. Output as a dataframe and a simple manhattanplot.
+
+*clus_sat_full_manhat_manhat.R*
+Generate the clustering on all traits<br>
+Inputs: "manhat.manhat.nolog.sat.out", "phe.sat.mean.1106.2506.diff.out", 
+Outputs: "km.sat.full.12.sqrd.cor.out" clustering in 12 clusters.
+<code style="color:red">@Bram&Basten. Some cleanup is still required here. We create a clustering on mean traits and on all traits. And this script has a lot of figures we don't actually use.</code>
+
 
 -<br>
 -<br>
