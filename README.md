@@ -28,24 +28,27 @@ Outputs: The GWAS results of every singel traits. Output as a dataframe and a si
 
 *clus_sat_full_manhat_manhat.R* <br>
 Generate the clustering on all traits<br>
-Inputs: "manhat.manhat.nolog.sat.out", "phe.sat.mean.1106.2506.diff.out", 
+Inputs: "manhat.manhat.nolog.sat.out", "phe.sat.mean.1106.2506.diff.out" <br>
 Outputs: "km.sat.full.12.sqrd.cor.out" clustering in 12 clusters.
 <code style="color:red">@Bram&Basten. Some cleanup is still required here. We create a clustering on mean traits and on all traits. And this script has a lot of figures we don't actually use.</code>
 
 
--<br>
--<br>
--<br>
--<br>
 Fig1.R                                           Script to generate figure 1<br>
+inputs: "Supplemental_data.xlsx" excel file containing all important supplemental data.<br>
 Fig2.R                                           Script to generate figure 2<br>
 Fig3.R                                           Script to generate figure 3, also generates the clustering on mean traits<br>
+inputs: "Supplemental_data.xlsx" <br>
 Fig4.R                                           Script to generate figure 4<br>
+inputs: "Supplemental_data.xlsx" <br>
 Fig5.R                                           Script to generate figure 5<br>
+inputs: "Supplemental_data.xlsx" <br>
 Fig6.R                                           Script to generate figure 6<br>
+inputs: "Supplemental_data.xlsx" <br>
 <br>
 Supp_fig6                                        Script to generate supplemental figure comparing height traits<br>
+inputs: "Supplemental_data.xlsx" <br>
 Supp_fig8                                        Script to generate supplemental figure 8. <br>
+inputs: "Supplemental_data.xlsx" <br>
 
 # Issues to resolve: <br>
 Not all scripts load in the data the exact same way. Some use Basten's file path some use Rens'. <br>
