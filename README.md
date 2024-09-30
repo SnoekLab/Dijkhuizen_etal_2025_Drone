@@ -30,8 +30,8 @@ Outputs: The GWAS results of every singel traits. Output as a dataframe and a si
 
 ### *manhat_manhat.R*
 Reads in all individual GWAS results, and outputs all significant results in 1 frame. <br>
-Inputs: All individual GWAS results, obj_bgi.sat.snps.out (old SNP map). <br>
-Outputs: manhat.manhat 
+Inputs: All individual GWAS results. <br>
+Outputs: manhat.manhat.nolog.sat.out 
 
 ### *clus_sat_full_manhat_manhat.R*
 Generate the clustering on all traits<br>
