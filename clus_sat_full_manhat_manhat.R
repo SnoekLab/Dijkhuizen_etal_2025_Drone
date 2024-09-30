@@ -1,4 +1,4 @@
-#.libPaths("~/R/x86_64-pc-linux-gnu-library/3.6")
+.libPaths("~/R/x86_64-pc-linux-gnu-library/3.6")
 
 library(ggplot2)
 library(viridis)
@@ -6,7 +6,7 @@ library(ggnetwork)
 library(pals)
 library(tidyr)
 
-load("manhat.manhat.nolog.sat.out")
+load("Clustering/cluster_new_snps/manhat.manhat.nolog.sat.new.snps.out")
 
 load("GWAS_objects/phe.sat.mean.1106.2506.diff.out")
 
@@ -22,87 +22,27 @@ pheno <- unname(pheno)
 statistic <-  sapply(colnames(cor.sat),function(x) strsplit(x,".",fixed = T)[[1]][2])
 statistic[which(statistic == "diff")] <- "Not applicable"
 
-km.sat.full.12.sqrd.cor <- kmeans(cor.sat^2, centers = 12)
+#km.sat.full.12.sqrd.cor <- kmeans(cor.sat^2, centers = 12)
 #save(km.sat.full.12.sqrd.cor,file = "Clustering/Definitive_clustering/clus_sat_full/km.sat.full.12.sqrd.cor.out")
-save(km.sat.full.12.sqrd.cor,file = "Clustering/Definitive_clustering/clus_sat_full/km.sat.full.12.sqrd.cor.out")
 #km.sat.full.16.sqrd.cor <- kmeans(cor.sat, centers = 16)
 
-### Correlation clustering
+load("Clustering/Definitive_clustering/clus_sat_full/km.sat.full.12.sqrd.cor.out")
 
-cor.sat.09 <- cor.sat
-cor.sat.09[lower.tri(cor.sat.09)] <-0
-cor.sat.09[abs(cor.sat.09)<0.9] <- 0
-n <- which(abs(cor.sat.09)>0.9,arr.ind = T)
-ok <- ggnetwork(n,arrow.gap = 0)
-ok <-data.frame(ok,Phenotype = rownames(n))
-
-cor.net.09 <- ggplot(ok, aes(x = x, y = y, xend = xend, yend = yend,col = sapply(colnames(cor.sat)[ok$vertex.names],function(x) strsplit(x, "[.]")[[1]][1]))) +
-  geom_edges(color = "grey50",curvature = 0.3) +
-  geom_point(size = 3)+
-  scale_color_discrete(type = as.vector(polychrome(length(unique(pheno)))))+
-  theme_blank()+
-  guides(col=guide_legend(title="Phenotype"))+
-  theme(text = element_text(size = 25))
-
-png(filename = "Clustering/Definitive_clustering/clus_sat_full/cor_09_phe_sat.png",width = 1125,height = 800)
-cor.net.09
-dev.off()
-
-cor.net.09 <- ggplot(ok, aes(x = x, y = y, xend = xend, yend = yend,col = sapply(colnames(cor.sat)[ok$vertex.names],function(x) strsplit(x, "[.]")[[1]][2]))) +
-  geom_edges(color = "grey50",curvature = 0.3) +
-  geom_point(size = 3)+
-  scale_color_discrete(type = as.vector(polychrome(length(unique(statistic)))))+
-  theme_blank()+
-  guides(col=guide_legend(title="Statistic"))+
-  theme(text = element_text(size = 25))
-
-png(filename = "Clustering/Definitive_clustering/clus_sat_full/cor_09_stat_sat.png",width = 1125,height = 800)
-cor.net.09
-dev.off()
-
-cor.net.09 <- ggplot(ok, aes(x = x, y = y, xend = xend, yend = yend,col = as.factor(km.sat.full.12.sqrd.cor$cluster[ok$vertex.names]))) +
-  geom_edges(color = "grey50",curvature = 0.3) +
-  geom_point(size = 3)+
-  scale_color_discrete(type = as.vector(polychrome(length(unique(km.sat.full.12.sqrd.cor$cluster)))))+
-  theme_blank()+
-  guides(col=guide_legend(title="Kmeans cluster"))+
-  theme(text = element_text(size = 25))
-
-png(filename = "Clustering/Definitive_clustering/clus_sat_full/cor_09_km_12_corsqrd_sat.png",width = 1125,height = 800)
-cor.net.09
-dev.off()
-
-# cor.net.09 <- ggplot(ok, aes(x = x, y = y, xend = xend, yend = yend,col = as.factor(km.sat.full.16.sqrd.cor$cluster[ok$vertex.names]))) +
-#   geom_edges(color = "grey50",curvature = 0.3) +
-#   geom_point(size = 3)+
-#   scale_color_discrete(type = as.vector(alphabet(length(unique(statistic)))))+
-#   theme_blank()+
-#   guides(col=guide_legend(title="Kmeans cluster"))+
-#   theme(text = element_text(size = 25))
-# 
-# png(filename = "Clustering/Definitive_clustering/clus_sat_full/cor_09_km_12_corsqrd_sat.png",width = 1125,height = 800)
-# cor.net.09
-# dev.off()
 
 km.clus <- match(plot.frame$Phenotype,gsub(".","_",names(km.sat.full.12.sqrd.cor$cluster),fixed = T))
 plot.frame <- data.frame(plot.frame,cluster = factor(as.vector(km.sat.full.12.sqrd.cor$cluster[km.clus])))
 
 ### Manhattan plot ordered by kmeans clusters
 
-load("GWAS_objects/obj_bgi.sat.snps.out")
+load("GWAS_objects/obj_all.ALTREF.out")
 
-snp.info <- sat.snps[,1:3]
+sat.snps <- all.ALTREF
 
-sat.snps <- sat.snps[,-c(1,2,3)]
+rm(all.ALTREF)
 
-sat.snps <- sat.snps[,c(1:81,83:124,126:130)]
+snp.info <- sat.snps[,1:10]
 
-threshold <- round(ncol(sat.snps)*0.05, digits=0)
-selc2 <- apply(sat.snps==1,1,sum) >= threshold & apply(sat.snps==3,1,sum) >= threshold #1 is wild type allele, 3 is alternative allele
-sat.snps <- sat.snps[selc2,]
-snp.info <-snp.info[selc2,]
 
-sat.snps[sat.snps == 9] <- 2 
 
 facet_bounds <- data.frame(chr = c(1,2,3,4,5,6,7,8,9),
                            xmin = c(0,0,0,0,0,0,0,0,0),
@@ -131,14 +71,14 @@ peak.plot <- ggplot(plot.frame,aes(x = Position,y = as.factor(Phenotype),col = c
   theme(axis.title.x =element_text(size = 25),axis.title.y = element_text(size = 30),axis.text.x = element_text(size = 20),panel.spacing.x = unit(1, "lines"),
         legend.text = element_text(size = 25),legend.title = element_text(size = 25),strip.text.x = element_blank(),panel.border = element_rect(fill = NA,color = "black"))
 
-png(filename = "Clustering/Definitive_clustering/clus_sat_full/manhat_manhat_sativa_clus_km.png",width = 1000,height = 1000)
+png(filename = "Clustering/cluster_new_snps/Figures/manhat_manhat_sativa_clus_km.png",width = 1000,height = 1000)
 peak.plot
 dev.off()
 
 
 peak.plot <- ggplot(plot.frame,aes(x = Position,fill = cluster))+
   geom_histogram(size = 1,bins = 20) + 
-  facet_grid(cluster~Chromosome,scales = "free_x",space = "free")+
+  facet_grid(cluster~Chromosome,scales = "free",space = "free_x")+
   geom_histogram(data=ff.hist,y=NA)+
   scale_x_continuous(expand = c(0.05,0.05),breaks = c(0,10,20,30)) +
   scale_fill_discrete(type = as.vector(polychrome(length(unique(km.sat.full.12.sqrd.cor$cluster))))) +
@@ -149,7 +89,7 @@ peak.plot <- ggplot(plot.frame,aes(x = Position,fill = cluster))+
         legend.text = element_text(size = 25),legend.title = element_text(size = 25),strip.text.x = element_text(size = 25),panel.border = element_rect(fill = NA,color = "black"),
         strip.text.y = element_blank())
 
-png(filename = "Clustering/Definitive_clustering/clus_sat_full/manhat_manhat_sativa_clus_km_hist.png",width = 1000,height = 1000)
+png(filename = "Clustering/cluster_new_snps/Figures/manhat_manhat_sativa_clus_km_hist.png",width = 1000,height = 1000)
 peak.plot
 dev.off()
 

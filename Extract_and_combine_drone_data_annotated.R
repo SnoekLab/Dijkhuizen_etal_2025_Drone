@@ -1,5 +1,6 @@
 ###### This script shows how to extract the plot data (rgb images, height etc) obtained by drones 
 ###### from the GeoTiff files.
+###### This script also processes the serriola data which is not used in the paper
 
 ### packages needed
 library(shapefiles)
