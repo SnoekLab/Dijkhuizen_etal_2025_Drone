@@ -35,22 +35,22 @@ Outputs: "km.sat.full.12.sqrd.cor.out" clustering of all traits in 12 clusters.<
 <code style="color:red">@Bram&Basten. Some cleanup is still required here. This script has a lot of figures we don't actually use.</code>
 
 ## Scripts to generate the figures
-*Fig1.R*                                           Script to generate figure 1<br>
+***Fig1.R***                                           Script to generate figure 1<br>
 inputs: "obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out" file containing the image data for sativa on day 93.<br>
-*Fig2.R*                                           Script to generate figure 2<br>
+***Fig2.R***                                           Script to generate figure 2<br>
 inputs: "Supplemental_data.xlsx" <br>
-*Fig3.R*                                           Script to generate figure 3, also generates the clustering on mean traits<br>
+***Fig3.R***                                           Script to generate figure 3, also generates the clustering on mean traits<br>
 inputs: "Supplemental_data.xlsx" <br>
-*Fig4.R*                                           Script to generate figure 4<br>
+***Fig4.R***                                           Script to generate figure 4<br>
 inputs: "Supplemental_data.xlsx" <br>
-*Fig5.R*                                           Script to generate figure 5<br>
+***Fig5.R***                                           Script to generate figure 5<br>
 inputs: "Supplemental_data.xlsx" <br>
-*Fig6.R*                                           Script to generate figure 6<br>
+***Fig6.R***                                           Script to generate figure 6<br>
 inputs: "Supplemental_data.xlsx", the two example images of the bolting lettuce are not included. <br>
 <br>
-*Supp_fig6*                                        Script to generate supplemental figure comparing height traits<br>
+***Supp_Fig6***                                        Script to generate supplemental figure comparing height traits<br>
 inputs: "Supplemental_data.xlsx" <br>
-*Supp_fig8*                                        Script to generate supplemental figure 8. <br>
+***Supp_Fig8***                                        Script to generate supplemental figure 8. <br>
 inputs: "Supplemental_data.xlsx" <br>
 
 # Issues to resolve: <br>
