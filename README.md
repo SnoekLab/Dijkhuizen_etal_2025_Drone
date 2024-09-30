@@ -29,8 +29,8 @@ Outputs: The GWAS results of every singel traits. Output as a dataframe and a si
 *clus_sat_full_manhat_manhat.R* <br>
 Generate the clustering on all traits<br>
 Inputs: "manhat.manhat.nolog.sat.out", "phe.sat.mean.1106.2506.diff.out" <br>
-Outputs: "km.sat.full.12.sqrd.cor.out" clustering in 12 clusters.<br>
-<code style="color:red">@Bram&Basten. Some cleanup is still required here. We create a clustering on mean traits and on all traits. And this script has a lot of figures we don't actually use.</code>
+Outputs: "km.sat.full.12.sqrd.cor.out" clustering of all traits in 12 clusters.<br>
+<code style="color:red">@Bram&Basten. Some cleanup is still required here. This script has a lot of figures we don't actually use.</code>
 
 
 Fig1.R                                           Script to generate figure 1<br>
