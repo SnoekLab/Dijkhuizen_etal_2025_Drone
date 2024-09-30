@@ -35,7 +35,7 @@ Outputs: "km.sat.full.12.sqrd.cor.out" clustering of all traits in 12 clusters.<
 <code style="color:red">@Bram&Basten. Some cleanup is still required here. This script has a lot of figures we don't actually use.</code>
 
 ## Scripts to generate the figures
-***Fig1.R***                                           Script to generate figure 1<br>
+***Fig1.R*** &ensp; Script to generate figure 1<br>
 inputs: "obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out" file containing the image data for sativa on day 93.<br>
 ***Fig2.R***                                           Script to generate figure 2<br>
 inputs: "Supplemental_data.xlsx" <br>
