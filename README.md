@@ -28,6 +28,11 @@ Perform the GWAS on all sativa data.<br>
 Inputs: "phe.sat.mean.1106.2506.diff.include.rat.out" dataframe containing all the phenotypes we perform GWAS on, "sat.accessions.out" list of all the accesions that we use, <br> "obj_all.ALTREF.out" SNPmap, "cov_new_snps.out" kinship matrix.
 Outputs: The GWAS results of every singel traits. Output as a dataframe and a simple manhattanplot.
 
+### *manhat_manhat.R*
+Reads in all individual GWAS results, and outputs all significant results in 1 frame. <br>
+Inputs: All individual GWAS results, obj_bgi.sat.snps.out (old SNP map). <br>
+Outputs: manhat.manhat 
+
 ### *clus_sat_full_manhat_manhat.R*
 Generate the clustering on all traits<br>
 Inputs: "manhat.manhat.nolog.sat.out", "phe.sat.mean.1106.2506.diff.out" <br>
