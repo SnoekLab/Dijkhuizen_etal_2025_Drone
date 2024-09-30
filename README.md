@@ -18,7 +18,7 @@ Dataframes containing for every pixel the RGB values, the MSP values, the height
 
 ### *Extr_phe_per_plot_annotated.R*
 Takes dataframe from previous script and extracts the phenotypes, color, color ratios and height.<br>
-inputs: "obj_all.pl_sat_rep2_1106_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out" <br>
+inputs: "obj_all.pl_sat_rep1_1106_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_1106_rgb_dsm_msp_red_nd.out",<br> "obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out" <br>
 Dataframes containing for every pixel the RGB values, the MSP values, the height, and what accession they belong to. <br>
 Outputs: "obj_phe.sat1.1106.out", "obj_phe.sat2.1106.out", "obj_phe.sat1.2506.out", obj_phe.sat2.2506.out, dataframes containing the phenotypes of all accessions.
 <code style="color:red">The script to combine both reps into one is still missing.</code>
