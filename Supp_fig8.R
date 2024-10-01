@@ -1,9 +1,11 @@
+# Script to create supplemental figure 8.
 library(ggplot2)
 library(openxlsx)
 library(cowplot)
 library(viridis)
 library(stringr)
 
+#Load in the data
 plot.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", "pvalues")
 plot.frame <- subset(plot.frame, select = -c(mean_clustering))
 plot.frame <- na.omit(plot.frame)
@@ -42,7 +44,7 @@ types <- sapply(1:nrow(plot.frame), function(x) check.if.mean(row = plot.frame[x
 plot.frame <- cbind(plot.frame, types)
 plot.frame <- plot.frame[order(types),]
 
-fig6 <- ggplot()+
+fig8 <- ggplot()+
   geom_point(data = pseudo.points,aes(Position,Pval),col=NA)+
   geom_point(data = plot.frame,aes(Position,Pval,col=types),alpha=0.8,size=2,shape=17)+
   geom_rect(data = rectangles[rectangles$type == "confirmed",],
@@ -72,5 +74,6 @@ fig6 <- ggplot()+
         legend.background = element_rect(linewidth = 0.2,fill = "grey90",color = "black"),
         legend.text=element_text(size=7))
 
-fig6
-ggsave("Script_per_figure/Figures/figure6e.png", width = 15, height = 15, units = "cm" )
+fig8
+
+ggsave("Script_per_figure/Figures/figure8e.png", width = 15, height = 15, units = "cm" )

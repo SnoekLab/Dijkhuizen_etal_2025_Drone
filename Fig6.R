@@ -1,14 +1,11 @@
+## Script to make figure 6. The power of extended descriptives with height traits
 library(ggplot2)
 library(openxlsx)
 library(cowplot)
 
+#Load in the data
 plot.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", "height.traits")
 load(file="Robjects_allpl/obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out") # The images
-
-plot.frame <- read.xlsx(xlsxFile =  "./DroneData2023/Necessary_data.xlsx", "height.traits")
-load(file="./DroneData2023/obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out")
-
-
 
 ## make pseudo points to get the right facet panel size
 pseudo.points <- data.frame(cbind(rep(1:9,2),rep(7,18),c(rep(0,9),214.8,217.1,257.8,377.4,339.6,193.1,195.5,309.6,203.9)))
@@ -21,10 +18,8 @@ plot.frame$alpha[plot.frame$types != "descriptives"] <- 1
 plot.frame$size[plot.frame$types == "descriptives"] <- 1.5
 plot.frame$size[plot.frame$types == "descriptives"] <- 2.5
 
-
-
-
-fig7c <- ggplot()+
+# Make the mean traits black and all extended descriptives a different color.
+fig6c <- ggplot()+
   geom_point(data = pseudo.points,aes(Position,Pval),col=NA)+
   geom_point(data = plot.frame, aes(Position, Pval, col = stat, alpha = alpha, size = size), shape = 17)+
   geom_point(data = plot.frame[plot.frame$types != "descriptives",], aes(Position, Pval), size = 3, shape = 17)+ #Manually add the mean traits again so they're on top
@@ -52,60 +47,33 @@ fig7c <- ggplot()+
         legend.text=element_text(size=8),
         legend.key.size = unit(0.2, "cm"))
 
-fig7c
+fig6c
 ggsave("Script_per_figure/Figures/figure7.png", width = 15, height = 5, units = "cm" )
 
-fig7a <- all.pl[all.pl$use.lk == "LK153" ,]
-use.rgb <- rgb(red=fig7a$red,green = fig7a$green,blue = fig7a$blue,maxColorValue = 255)
-fig7a.plot <- ggplot(fig7a)+
+fig6a <- all.pl[all.pl$use.lk == "LK153" ,]
+use.rgb <- rgb(red=fig6a$red,green = fig6a$green,blue = fig6a$blue,maxColorValue = 255)
+fig6a.plot <- ggplot(fig6a)+
   geom_tile(aes(x,y),fill=use.rgb)+
   theme_void()+
   theme(plot.title = element_text(size  =12, hjust = 0.1),
         axis.title.x=element_blank(),
         axis.title.y=element_blank()) +
   ggtitle(" ")
-fig7a.plot
+fig6a.plot
 
-fig7b <- all.pl[all.pl$use.lk == "LK153" ,]
-fig7b$estheight <- fig7b$estheight - min(fig7b$estheight) # estimation
-fig7b.plot <- ggplot(fig7b)+
-  geom_tile(aes(x,y, fill = estheight))+
-  scale_fill_viridis_c()+
-  theme_void()+
-  theme(plot.title = element_text(size  =12, hjust = 0.1),
-        axis.title.x=element_blank(),
-        axis.title.y=element_blank()) +
-  ggtitle("LK153")
-fig7b.plot
-
-#Alternate figure 7b
-
-fig7b <- all.pl[all.pl$use.lk == "LK153" ,]
-use.rgb <- rgb(red=fig7b$red,green = fig7b$green,blue = fig7b$blue,maxColorValue = 255)
-fig7b.plot <- ggplot(fig7b)+
-  geom_tile(aes(x,y, fill = estheight))+
-  scale_fill_viridis_c()+
-  theme_void()+
-  theme(plot.title = element_text(size  =12, hjust = 0.1),
-        axis.title.x=element_blank(),
-        axis.title.y=element_blank()) +
-  xlab("Longitude")+
-  ylab("Latitude")+
-  ggtitle("LK153")
-fig7b.plot
-
-### Another alternative plot 7b
-fig7b.plot <- ggplot() + geom_blank() + theme_bw() + # Create a blank plot to draw on.
+### Figure 6b
+fig6b.plot <- ggplot() + geom_blank() + theme_bw() + # Create a blank plot to draw on.
   theme(panel.border = element_blank())
-fig7b.plot
-fig7b.plot <- ggdraw(fig7b.plot) + draw_image("boltinglettuce.png")
+fig6b.plot
+fig6b.plot <- ggdraw(fig6b.plot) + draw_image("boltinglettuce.png")
 
 ################################
-fig7AB <- plot_grid(fig7a.plot, fig7b.plot, ncol =2, labels = c("A", "B"))
-fig7ABC <- plot_grid(fig7AB, fig7c, nrow = 2, rel_heights = c(1.5,2), labels = c("", "C"))
-fig7ABC
+fig6AB <- plot_grid(fig6a.plot, fig6b.plot, ncol =2, labels = c("A", "B"))
+fig6ABC <- plot_grid(fig6AB, fig6c, nrow = 2, rel_heights = c(1.5,2), labels = c("", "C"))
+fig6ABC
 
+#Two ways to save this image.
 ggsave("Script_per_figure/Figures/figure7ABC.png", width = 15, height = 10, units = "cm" )
 png("Script_per_figure/Figures/figure7abcpng.png", width = 860, height = 540)
-fig7ABC
+fig6ABC
 dev.off()

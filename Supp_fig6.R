@@ -1,14 +1,13 @@
-
-##############################################################################################################
-## LBS version ###############################################################################################
+# Script to create supplemental figure 6.
+# Note that while in most of the paper we use the log2 fold change here we use the absolute change.
 library(openxlsx)
 library(cowplot)
 library(ggplot2)
 library(viridis)
 
-height.day1.frame <- read.xlsx(xlsxFile =  "F:/Drone-paper/Necessary_data.xlsx", sheet =  "Height.mean.day1")
-height.day2.frame <- read.xlsx(xlsxFile =  "F:/Drone-paper/Necessary_data.xlsx", sheet =  "Height.mean.day2")
-height.change.frame <- read.xlsx(xlsxFile =  "F:/Drone-paper/Necessary_data.xlsx", sheet =  "Height.mean.change")
+height.day1.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", sheet =  "Height.mean.day1")
+height.day2.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", sheet =  "Height.mean.day2")
+height.change.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", sheet =  "Height.mean.change")
 
 # make vector with trait names
 Trait <- c(rep("Height day-78",nrow(height.day1.frame)),rep("Height day-93",nrow(height.day2.frame)),rep("Height change",nrow(height.change.frame)))
@@ -45,4 +44,5 @@ height.fig <- ggplot(to.pl[to.pl$pval>2,],aes(pos,pval))+
         legend.position = "none")
 
 height.fig
+
 ggsave("Script_per_figure/Figures/heightsupp.png", width = 15, height = 7.5, units = "cm" )

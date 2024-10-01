@@ -1,18 +1,14 @@
-###############################################################################################
-## LBS version
-
+## Script to make figure 5. The large aggregate of manhattan plots
 library(ggplot2)
 library(openxlsx)
 library(cowplot)
 library(viridis)
 
 plot.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", sheet =  "pvalues")
-#plot.frame <- read.xlsx(xlsxFile =  "./DroneData2023/Necessary_data.xlsx", sheet =  "pvalues")
 plot.frame <- plot.frame[!is.na(plot.frame$mean_clustering),]
 head(plot.frame)
-#Locations of prominent peaks:
+#Locations of prominent peaks, annotated with rectangles:
 rectangles <- data.frame(read.xlsx("D:/Drone-paper/Necessary_data.xlsx", sheet = "peaks.fig5"))
-rectangles
 
 ### INCLUDE DAY and diff/dira as column 
 obs <- rep(NA,nrow(plot.frame))
