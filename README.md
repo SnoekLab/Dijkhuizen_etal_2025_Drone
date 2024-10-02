@@ -8,7 +8,7 @@ Output<br>
 
 ## Scripts to process the data
 ### *Extract_and_combine_drone_data_annotated.R*
-Extract the different plots from total image and output height, color and coordinates in a dataframe. Outputs in 4 seperate dataframes for Sativa and Serriola day 1 and 2.<br>
+Extract the different plots from total image and output height, color and coordinates in a dataframe.<br>
 Inputs: "obj_metawco.out" a metadata file containing the location data of all plots, "246f746c-f8e2-4bcf-beb9-6051bc535812_RGB_modified_ref_points.tif" file containing the rgb values, <br>
 "246f746c-f8e2-4bcf-beb9-6051bc535812_DSM_modified.tif" file containing the plant heights, "cebe7014-1426-4a5a-a78f-14d4559875c4_MSP_modified.tif" file containing the multispectral values, <br>
 "Tiff_files_11/11_GCP.shp" points for georeferencing. <br>
