@@ -1,0 +1,61 @@
+
+### Author: Basten L. Snoek -- 2024-10-02 -- l.b.snoek@uu.nl
+
+## script part of the publication:
+# ------------------------------------------------------------------------------
+# From   aerial  drone to QTL: Leveraging next-generation phenotyping to reveal 
+# the genetics of color and height in field-grown Lactuca sativa
+#
+# Rens Dijkhuizen*, Bram van Eijnatten*, Sarah Mehrem, Esther van den Bergh,
+# Jelmer van Lieshout, Kiki Spaninks, Steven Kaandorp, Remko Offringa, 
+# Marcel Proveniers, Guido van den Ackerveken, Basten L. Snoek 
+#
+# ------------------------------------------------------------------------------
+#
+
+### This script works with the following files (R data objects)
+
+obj_day1.rep1_sat_rep1_1106_rgb_dsm_msp.out
+obj_day2.rep1_sat_rep1_2506_rgb_dsm_msp_red_nd.out
+obj_day1.rep2_sat_rep1_1106_rgb_dsm_msp.out
+obj_day2.rep2_sat_rep1_2506_rgb_dsm_msp_red_nd.out
+
+
+## library to make a plot ##
+library(ggplot2)
+
+### Example to load the data and make a plot ...................................
+
+load("obj_day1.rep1_sat_rep1_1106_rgb_dsm_msp.out") # load data
+
+# show data
+head(day1.rep1)
+
+# mean green per plot (note this still includes the soil pixels)
+meangreen.per.lk <- aggregate(day1.rep1$green,list(day1.rep1$use.lk),mean,na.rm=T)
+hist(meangreen.per.lk$x,breaks = 100)
+
+# select one genotype and make a plot
+use.title <- "LK125"
+sub.pl <- data.frame(day1.rep1[day1.rep1$use.lk == use.title,1:6],day="day1")
+use.rgb <- rgb(red=sub.pl$red,green = sub.pl$green,blue = sub.pl$blue,maxColorValue = 255)
+my.plot <- ggplot(sub.pl)+
+  geom_raster(aes(x,y),fill=use.rgb)+
+  scale_x_continuous(expand = c(0,0)) +
+  scale_y_continuous(expand = c(0,0)) +
+  xlab(use.title) + ylab("") +
+  theme(plot.title = element_text(size  = 28),
+        plot.title.position = "plot",
+        axis.text = element_blank(),
+        panel.background = element_blank(),
+        panel.grid = element_blank(),
+        panel.border = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title = element_blank(),
+        strip.text = element_text(size = 24)
+  )
+
+my.plot
+
+
+######################## END ##################################################
