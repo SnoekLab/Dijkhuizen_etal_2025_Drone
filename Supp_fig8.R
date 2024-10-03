@@ -77,3 +77,53 @@ fig8 <- ggplot()+
 fig8
 
 ggsave("Script_per_figure/Figures/figure8e.png", width = 15, height = 15, units = "cm" )
+
+
+################################################################################
+# We also include the code to generate the clustering on ALL traits here.
+# This is not necessary to generate this figure,
+# as we already included this clustering in the supplementary excel file.
+# However, it is included for completeness sake.
+###############################################################################
+# Here we also create the clustering on ALL traits instead of only the mean traits. This is used in supplement figure 8.
+plot.frame <- read.xlsx(xlsxFile = "D:/Drone-paper/Necessary_data.xlsx",sheet =  "pvalues")
+sat.full <- read.xlsx(xlsxFile = "D:/Drone-paper/Necessary_data.xlsx", sheet = "Phenotypes")
+
+sat.full.colnames <- sat.full$TraitID
+sat.full <- data.frame(t(sat.full[,-(1:4)]))
+colnames(sat.full) <- sat.full.colnames
+
+# We remove all diff(absolute change) and instead use dira (log2 fold change)
+# We remove all tot.px traits, because some plants were removed for destructive phenotyping making this trait uninformative.
+# We remove the ndvi2 trait, because it is identical to ndvi.
+selection <- colnames(sat.full)[grep("diff|px|ndvi2|growth_width", colnames(sat.full), invert = TRUE)]
+
+sat.full <- sat.full[,selection]
+cor.sat <- cor(sat.full, use = "pairwise")
+## clustering
+set.seed(1)
+km.sat.sqrd <- kmeans(cor.sat^2, centers = 10)
+
+## make network + layout
+cor.sat.08 <- cor.sat
+cor.sat.08[lower.tri(cor.sat.08)] <-0
+cor.sat.08[abs(cor.sat.08)<0.8] <- 0
+n <- which(abs(cor.sat.08)>0.8,arr.ind = T)
+ok <- ggnetwork(n,arrow.gap = 0)
+ok <-data.frame(ok,Phenotype = rownames(cor.sat)[ok$vertex.names])
+ok$Phenotype
+### add additional data
+all_clustering <- as.factor(km.sat.sqrd$cluster[ok$vertex.names])
+clust.names <- c("A","B","C","D","E","F","G","H","I","J")
+all_clustering <- clust.names[all_clustering]
+
+to.pl <- data.frame(ok,all_clustering)
+to.pl[1:5,]
+
+# For our current purposed we just look at the clustering.
+clustering <- data.frame(to.pl$Phenotype, to.pl$all_clustering)
+colnames(clustering) <- c("Phenotype", "all_clustering")
+
+# Output the clustering in a CSV file. This information is already included in the supplementary excel file
+write.csv(clustering, "clustering.csv", row.names = FALSE)
+
