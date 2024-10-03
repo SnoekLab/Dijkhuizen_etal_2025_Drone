@@ -55,4 +55,5 @@ inputs: "Supplemental_data.xlsx" <br>
 # Issues to resolve: <br>
 Fig1 and 6 require the actual image data, which we don't include because it is enermous <br>
 Proposed solution: Don't include Fig1.R because it is just 6 fotos and for Fig 6 only include the graph. <br>
-manhat_manhat_sat_nolog_new_snps.R still uses sat.accesions.out while we use Supplemental_data.xlsx for everything else. Should not be hard to fix.
+Some early scripts still use the old file "sat.accesions.out". This is just a very small text file with all the LKIDs we use. This should either be replaced by a sheet in "supplemental_data.xlsx" or be included. <br>
+I vote for it to be included, because the supplemental_data.xlsx is only used for the figues. I don't want to use it for the early scripts because it is more or less the result.
