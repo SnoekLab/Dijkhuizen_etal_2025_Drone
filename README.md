@@ -28,16 +28,10 @@ Perform the GWAS on all sativa data.<br>
 Inputs: "phe.sat.mean.1106.2506.diff.include.rat.out" dataframe containing all the phenotypes we perform GWAS on, "sat.accessions.out" list of all the accesions that we use, <br> "obj_all.ALTREF.out" SNPmap, "cov_new_snps.out" kinship matrix.
 Outputs: The GWAS results of every singel traits. Output as a dataframe and a simple manhattanplot.
 
-### *manhat_manhat.R*
+### *manhat_manhat_sat_nolog_new_snps.R*
 Reads in all individual GWAS results, and outputs all significant results in 1 frame. <br>
-Inputs: All individual GWAS results. <br>
-Outputs: manhat.manhat.nolog.sat.out 
-
-### *clus_sat_full_manhat_manhat.R*
-Generate the clustering on all traits<br>
-Inputs: "manhat.manhat.nolog.sat.out", "phe.sat.mean.1106.2506.diff.out" <br>
-Outputs: "km.sat.full.12.sqrd.cor.out" clustering of all traits in 12 clusters.<br>
-<code style="color:red">@Bram&Basten. Some cleanup is still required here. This script has a lot of figures we don't actually use.</code>
+Inputs: "obj_all.ALTREF.out" SNPmap, sat.accessions.out list of all accesions that we use,  All individual GWAS results. <br>
+Outputs: manhat.manhat.nolog.saw.new.snps.out all frames aggregated into one large dataframe.
 
 ## Scripts to generate the figures
 ***Fig1.R*** &emsp; Script to generate figure 1<br>
@@ -55,11 +49,10 @@ inputs: "Supplemental_data.xlsx", the two example images of the bolting lettuce 
 <br>
 ***Supp_Fig6*** &emsp; Script to generate supplemental figure comparing height traits<br>
 inputs: "Supplemental_data.xlsx" <br>
-***Supp_Fig8*** &emsp; Script to generate supplemental figure 8. <br>
+***Supp_Fig8*** &emsp; Script to generate supplemental figure 8, also optionally generates the clustering on all traits (not just the mean traits like in Fig3.R). <br>
 inputs: "Supplemental_data.xlsx" <br>
 
 # Issues to resolve: <br>
-Not all scripts load in the data the exact same way. Some use Basten's file path some use Rens'. <br>
 Fig1 and 6 require the actual image data, which we don't include because it is enermous <br>
 Proposed solution: Don't include Fig1.R because it is just 6 fotos and for Fig 6 only include the graph. <br>
-Fig3 contains multiple versions for fig3.
+manhat_manhat_sat_nolog_new_snps.R still uses sat.accesions.out while we use Supplemental_data.xlsx for everything else. Should not be hard to fix.
