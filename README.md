@@ -7,6 +7,7 @@ Input<br>
 Output<br>
 
 ## Scripts to process the data
+<code style="color:red">This can be removed if we deliver the dataframes instead of </code>
 ### *Extract_and_combine_drone_data_annotated.R*
 Extract the different plots from total image and output height, color and coordinates in a dataframe.<br>
 Inputs: "obj_metawco.out" a metadata file containing the location data of all plots, "246f746c-f8e2-4bcf-beb9-6051bc535812_RGB_modified_ref_points.tif" file containing the rgb values, <br>
@@ -14,7 +15,7 @@ Inputs: "obj_metawco.out" a metadata file containing the location data of all pl
 "Tiff_files_11/11_GCP.shp" points for georeferencing. <br>
 Outputs: "obj_all.pl_sat_rep1_1106_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_1106_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out" <br>
 Dataframes containing for every pixel the RGB values, the MSP values, the height, and what accession they belong to. <br>
-<code style="color:red">@Basten, we don't actually deliver any of the tif files. Also the script actually only ouputs day 2506. To switch to 1106 we need to manually change some things</code>
+<code style="color:red">This can be removed if we deliver the dataframes instead of </code>
 
 ### *Extr_phe_per_plot_annotated.R*
 Takes dataframe from previous script and extracts the phenotypes, color, color ratios and height.<br>
@@ -51,6 +52,13 @@ inputs: "Supplemental_data.xlsx", the two example images of the bolting lettuce 
 inputs: "Supplemental_data.xlsx" <br>
 ***Supp_Fig8*** &emsp; Script to generate supplemental figure 8, also optionally generates the clustering on all traits (not just the mean traits like in Fig3.R). <br>
 inputs: "Supplemental_data.xlsx" <br>
+
+## Extra
+### *Raw_drone_image_access.R*
+Plots individual accessions. Not necessary, but useful for further investigation. <br>
+Inputs: Choose one of the following depending on what day and rep you want: <br>
+obj_day1.rep1_sat_rep1_1106_rgb_dsm_msp.out, obj_day2.rep1_sat_rep1_2506_rgb_dsm_msp_red_nd.out, obj_day1.rep2_sat_rep1_1106_rgb_dsm_msp.out, obj_day2.rep2_sat_rep1_2506_rgb_dsm_msp_red_nd.out
+Outputs: Plot of the chosen accessions.
 
 # Issues to resolve: <br>
 Fig1 and 6 require the actual image data, which we don't include because it is enermous <br>
