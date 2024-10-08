@@ -15,10 +15,10 @@
 
 ### This script works with the following files (R data objects)
 
-obj_day1.rep1_sat_rep1_1106_rgb_dsm_msp.out
-obj_day2.rep1_sat_rep1_2506_rgb_dsm_msp_red_nd.out
-obj_day1.rep2_sat_rep1_1106_rgb_dsm_msp.out
-obj_day2.rep2_sat_rep1_2506_rgb_dsm_msp_red_nd.out
+obj_all.pl_sat_rep1_0611_rgb_dsm_msp.out
+obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out
+obj_all.pl_sat_rep2_0611_rgb_dsm_msp.out
+obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out
 
 
 ## library to make a plot ##
@@ -26,18 +26,18 @@ library(ggplot2)
 
 ### Example to load the data and make a plot ...................................
 
-load("obj_day1.rep1_sat_rep1_1106_rgb_dsm_msp.out") # load data
+load("obj_all.pl_sat_rep1_0611_rgb_dsm_msp.out") # load data
 
 # show data
-head(day1.rep1)
+head(all.pl)
 
 # mean green per plot (note this still includes the soil pixels)
-meangreen.per.lk <- aggregate(day1.rep1$green,list(day1.rep1$use.lk),mean,na.rm=T)
+meangreen.per.lk <- aggregate(all.pl$green,list(all.pl$use.lk),mean,na.rm=T)
 hist(meangreen.per.lk$x,breaks = 100)
 
 # select one genotype and make a plot
 use.title <- "LK125"
-sub.pl <- data.frame(day1.rep1[day1.rep1$use.lk == use.title,1:6],day="day1")
+sub.pl <- data.frame(all.pl[all.pl$use.lk == use.title,1:6],day="day1")
 use.rgb <- rgb(red=sub.pl$red,green = sub.pl$green,blue = sub.pl$blue,maxColorValue = 255)
 my.plot <- ggplot(sub.pl)+
   geom_raster(aes(x,y),fill=use.rgb)+
