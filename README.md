@@ -1,10 +1,13 @@
 # Dijkhuizen_etal_2024_Drone
 Scripts used in Dijkhuizen etal 2024
-
+For all scripts we give the:
 Name<br>
 Description<br>
 Input<br>
 Output<br>
+<br>
+Under Scripts to process the data we give the scripts to recreate our data analysis starting with the dataframe containing the original image information. <br>
+Under Scripts to generate the figures we give the scripts to genereate the figures we use in the paper using the most important data summarized in Supplemental_data.xlsx. <br>
 
 ## Scripts to process the data
 <code style="color:red">This can be removed if we deliver the dataframes instead of </code>
@@ -26,12 +29,12 @@ Outputs: "obj_phe.sat1.1106.out", "obj_phe.sat2.1106.out", "obj_phe.sat1.2506.ou
 
 ### *cor_gwas_massive_clus_sativa_all_snps.R*
 Perform the GWAS on all sativa data.<br>
-Inputs: "phe.sat.mean.1106.2506.diff.include.rat.out" dataframe containing all the phenotypes we perform GWAS on, "sat.accessions.out" list of all the accesions that we use, <br> "obj_all.ALTREF.out" SNPmap, "cov_new_snps.out" kinship matrix.
+Inputs: "phe.sat.mean.1106.2506.diff.include.rat.out" dataframe containing all the phenotypes we perform GWAS on, "obj_all.ALTREF.out" SNPmap, "cov_new_snps.out" kinship matrix. <br>
 Outputs: The GWAS results of every singel traits. Output as a dataframe and a simple manhattanplot.
 
 ### *manhat_manhat_sat_nolog_new_snps.R*
 Reads in all individual GWAS results, and outputs all significant results in 1 frame. <br>
-Inputs: "obj_all.ALTREF.out" SNPmap, sat.accessions.out list of all accesions that we use,  All individual GWAS results. <br>
+Inputs: "obj_all.ALTREF.out" SNPmap, All individual GWAS results. <br>
 Outputs: manhat.manhat.nolog.saw.new.snps.out all frames aggregated into one large dataframe.
 
 ## Scripts to generate the figures
@@ -61,5 +64,5 @@ obj_day1.rep1_sat_rep1_1106_rgb_dsm_msp.out, obj_day2.rep1_sat_rep1_2506_rgb_dsm
 Outputs: Plot of the chosen accessions.
 
 # Issues to resolve: <br>
-Some early scripts still use the old file "sat.accesions.out". This is just a very small text file with all the LKIDs we use. This should either be replaced by a sheet in "supplemental_data.xlsx" or be included. <br>
-I vote for it to be included, because the supplemental_data.xlsx is only used for the figues. I don't want to use it for the early scripts because it is supposed to represent the result of the early scripts.
+Basten's Raw_drone_image_access.R script and the Extr_phe_per_plot_annotated.R script use almost exactly the same dataframes. But not exactly the same. <br>
+We should fix this.
