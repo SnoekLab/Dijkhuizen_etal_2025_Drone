@@ -54,5 +54,4 @@ obj_day1.rep1_sat_rep1_1106_rgb_dsm_msp.out, obj_day2.rep1_sat_rep1_2506_rgb_dsm
 Outputs: Plot of the chosen accessions.
 
 # Issues to resolve: <br>
-Basten's Raw_drone_image_access.R script and the Extr_phe_per_plot_annotated.R script use almost exactly the same dataframes. But not exactly the same. <br>
-We should fix this.
+All issues resolved!
