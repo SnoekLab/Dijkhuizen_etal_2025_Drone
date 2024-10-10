@@ -12,10 +12,21 @@ Under Scripts to generate the figures we give the scripts to genereate the figur
 ## Scripts to process the data
 ### *Extr_phe_per_plot_annotated.R*
 Takes dataframe from previous script and extracts the phenotypes, color, color ratios and height.<br>
-inputs: "obj_all.pl_sat_rep1_1106_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_1106_rgb_dsm_msp_red_nd.out",<br> "obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out" <br>
+Inputs: "obj_all.pl_sat_rep1_1106_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_1106_rgb_dsm_msp_red_nd.out",<br> "obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out" <br>
 Dataframes containing for every pixel the RGB values, the MSP values, the height, and what accession they belong to. <br>
 Outputs: "obj_phe.sat1.1106.out", "obj_phe.sat2.1106.out", "obj_phe.sat1.2506.out", obj_phe.sat2.2506.out, dataframes containing the phenotypes of all accessions.
 <code style="color:red">The script to combine both reps into one is still missing.</code>
+
+### *Correct_heights.R*
+The different plots have slightly different elevation. This script corrects for that. <br>
+Inputs: "obj_phe.sat1.1106.out", "obj_phe.sat2.1106.out", "obj_phe.sat1.2506.out", obj_phe.sat2.2506.out <br>
+"obj_phe.sat1.1106.soil.out", "obj_phe.sat2.1106.soil.out", "obj_phe.sat1.2506.soil.out", obj_phe.sat2.2506.soil.out <br>
+Outputs: "obj.phe.cor.sat1.1106.out", "obj.phe.cor.sat2.1106.out", "obj.phe.cor.sat1.2506.out", "obj.phe.cor.sat2.2506.out"
+
+### *Difference_tp.R*
+Calculates the absolute differences, the log2 fold change differences and merges both reps into one mean result for the GWAS step. <br>
+Inputs: TBD <br>
+Outputs: TBD <br>
 
 ### *cor_gwas_massive_sativa_all_snps.R*
 Perform the GWAS on all sativa data.<br>
@@ -54,4 +65,5 @@ obj_day1.rep1_sat_rep1_1106_rgb_dsm_msp.out, obj_day2.rep1_sat_rep1_2506_rgb_dsm
 Outputs: Plot of the chosen accessions.
 
 # Issues to resolve: <br>
-All issues resolved!
+Go over correct_heights.R and Difference_tp.R <br>
+Once that is done run all the code and make sure that the results are still correct.
