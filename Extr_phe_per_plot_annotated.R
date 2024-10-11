@@ -171,6 +171,7 @@ save(phe.sat2.1106,file="Phenotypes_per_plot/obj_phe.sat2.1106.out")
 #write.xlsx(phe.sat2.1106.plant,file="Phenotypes_per_plot/phe_sat_rep2_1106.xlsx",rownames=T)
 
 #### Now do the same for data from 25-06-2020, we use the same function for extracting phenotypes.
+#### The reason we do these days seperately is because they need different EVI thresholds.
 #load(file="R_objects_plots/obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out") #Run this for rep1
 #load(file="R_objects_plots/obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out") #Run this for rep2
 
