@@ -13,8 +13,8 @@ library(cowplot)
 ## We start with the data from 11-06-2021
 
 #### Each objects contains the data on one replicate. Below code should be ran separately for each object.
-#load(file = "R_objects_plots/obj_all.pl_sat_rep1_0611_rgb_dsm_msp.out")
-#load(file = "R_objects_plots/obj_all.pl_sat_rep2_0611_rgb_dsm_msp.out")
+#load(file = "R_objects_plots/obj_all.pl_sat_rep1_0611_rgb_dsm_msp.out") # Run this for rep1
+#load(file = "R_objects_plots/obj_all.pl_sat_rep2_0611_rgb_dsm_msp.out") # Run this for rep 2
 
 # We threshold on th enhanced vegetation index to seperate plant from soil pixels.
 evi <- 2.5*((all.pl$msp5-all.pl$msp3)/(all.pl$msp5+6*all.pl$msp3+7.5*all.pl$msp1+1))
@@ -134,47 +134,45 @@ ls()[grep("phe",ls())[-5]]
 ###### IMPORTANT #########
 
 # sat rep1 1106
-phe.sat1.1106.soil <- data.frame(phe.ARVI[-1],phe.blue[-1],phe.coltot[-1],phe.EVI[-1],phe.gborrat[-1],phe.gbrat[-1],phe.green[-1],phe.height[-1],phe.msp1[-1],phe.msp2[-1],phe.msp3[-1],    
+phe.sat1.1106.plant <- data.frame(phe.ARVI[-1],phe.blue[-1],phe.coltot[-1],phe.EVI[-1],phe.gborrat[-1],phe.gbrat[-1],phe.green[-1],phe.height[-1],phe.msp1[-1],phe.msp2[-1],phe.msp3[-1],    
                                  phe.msp4[-1],phe.msp5[-1],phe.ndvi[-1],phe.rbrat[-1],phe.red[-1],phe.relblue[-1],phe.relgreen[-1],phe.relred[-1],phe.rbograt[-1],phe.rgobrat[-1],
                                  phe.rgrat[-1],phe.sipi[-1],phe.SR[-1],as.numeric(plant.px),as.numeric(tot.px)) 
-phe.sat1.1106.soil <- data.frame(phe.blue$Group.1,as.matrix(phe.sat1.1106.soil))
-colnames(phe.sat1.1106.soil)[1] <- "accession"
-colnames(phe.sat1.1106.soil)[length(colnames(phe.sat1.1106.soil))-1]<-c("plant.px")
-colnames(phe.sat1.1106.soil)[length(colnames(phe.sat1.1106.soil))]<-c("tot.px")
+phe.sat1.1106.plant <- data.frame(phe.blue$Group.1,as.matrix(phe.sat1.1106.plant))
+colnames(phe.sat1.1106.plant)[1] <- "accession"
+colnames(phe.sat1.1106.plant)[length(colnames(phe.sat1.1106.plant))-1]<-c("plant.px")
+colnames(phe.sat1.1106.plant)[length(colnames(phe.sat1.1106.plant))]<-c("tot.px")
 
 # Plot correlation matrix
 png(filename = "cor_phe_sat1_1106.png",width = 1500, height = 1500)
-heatmap.2(cor(phe.sat1.1106.soil[,-1],use="complete.obs"),trace = "none",col = turbo(256),na.rm = T)
+heatmap.2(cor(phe.sat1.1106.plant[,-1],use="complete.obs"),trace = "none",col = turbo(256),na.rm = T)
 dev.off()
 
 
-phe.sat1.1106 <- phe.sat1.1106.soil
+phe.sat1.1106 <- phe.sat1.1106.plant
 save(phe.sat1.1106,file="Phenotypes_per_plot/obj_phe.sat1.1106.out")
-#write.xlsx(phe.sat1.1106.soil,file="Phenotypes_per_plot/phe_sat_rep1_1106.xlsx",rownames=T)
+#write.xlsx(phe.sat1.1106.plant,file="Phenotypes_per_plot/phe_sat_rep1_1106.xlsx",rownames=T)
 
 ###### IMPORTANT #########
 # The save rep2 part starts here.
 ###### IMPORTANT #########
 # sat rep2 1106
 
-phe.sat2.1106.soil <- data.frame(phe.ARVI[-1],phe.blue[-1],phe.coltot[-1],phe.EVI[-1],phe.gborrat[-1],phe.gbrat[-1],phe.green[-1],phe.height[-1],phe.msp1[-1],phe.msp2[-1],phe.msp3[-1],    
+phe.sat2.1106.plant <- data.frame(phe.ARVI[-1],phe.blue[-1],phe.coltot[-1],phe.EVI[-1],phe.gborrat[-1],phe.gbrat[-1],phe.green[-1],phe.height[-1],phe.msp1[-1],phe.msp2[-1],phe.msp3[-1],    
                                  phe.msp4[-1],phe.msp5[-1],phe.ndvi[-1],phe.rbrat[-1],phe.red[-1],phe.relblue[-1],phe.relgreen[-1],phe.relred[-1],phe.rbograt[-1],phe.rgobrat[-1],
                                  phe.rgrat[-1],phe.sipi[-1],phe.SR[-1],as.numeric(plant.px),as.numeric(tot.px)) 
-phe.sat2.1106.soil <- data.frame(phe.blue$Group.1,as.matrix(phe.sat2.1106.soil))
-colnames(phe.sat2.1106.soil)[1] <- "accession"
-colnames(phe.sat2.1106.soil)[length(colnames(phe.sat2.1106.soil))-1]<-c("plant.px")
-colnames(phe.sat2.1106.soil)[length(colnames(phe.sat2.1106.soil))]<-c("tot.px")
+phe.sat2.1106.plant <- data.frame(phe.blue$Group.1,as.matrix(phe.sat2.1106.plant))
+colnames(phe.sat2.1106.plant)[1] <- "accession"
+colnames(phe.sat2.1106.plant)[length(colnames(phe.sat2.1106.plant))-1]<-c("plant.px")
+colnames(phe.sat2.1106.plant)[length(colnames(phe.sat2.1106.plant))]<-c("tot.px")
 
-phe.sat2.1106 <- phe.sat2.1106.soil
+phe.sat2.1106 <- phe.sat2.1106.plant
 
 save(phe.sat2.1106,file="Phenotypes_per_plot/obj_phe.sat2.1106.out")
-#write.xlsx(phe.sat2.1106.soil,file="Phenotypes_per_plot/phe_sat_rep2_1106.xlsx",rownames=T)
+#write.xlsx(phe.sat2.1106.plant,file="Phenotypes_per_plot/phe_sat_rep2_1106.xlsx",rownames=T)
 
 #### Now do the same for data from 25-06-2020, we use the same function for extracting phenotypes.
-
-load(file="R_objects_plots/obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out") ### [[Done]]
-#load(file="R_objects_plots/obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out") ### [[Done]]
-
+#load(file="R_objects_plots/obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out") #Run this for rep1
+#load(file="R_objects_plots/obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out") #Run this for rep2
 
 # Here we obtain a logical with TRUE if EVI > 0.4 (plant pixels) and FALSE otherwise.
 evi.selc <- 2.5*((all.pl$msp5-all.pl$msp3)/(all.pl$msp5+6*all.pl$msp3+7.5*all.pl$msp1+1))>0.4
@@ -283,38 +281,38 @@ ls()[grep("phe",ls())[-6]]
 ###### IMPORTANT #########
 # sat rep1 2506
 
-phe.sat1.2506.soil <- data.frame(phe.ARVI[-1],phe.blue[-1],phe.cired[-1],phe.coltot[-1],phe.EVI[-1],phe.gborrat[-1],phe.gbrat[-1],phe.green[-1],phe.height[-1],phe.msp1[-1],phe.msp2[-1],phe.msp3[-1],    
+phe.sat1.2506.plant <- data.frame(phe.ARVI[-1],phe.blue[-1],phe.cired[-1],phe.coltot[-1],phe.EVI[-1],phe.gborrat[-1],phe.gbrat[-1],phe.green[-1],phe.height[-1],phe.msp1[-1],phe.msp2[-1],phe.msp3[-1],    
                                  phe.msp4[-1],phe.msp5[-1],phe.ndre[-1],phe.ndvi[-1],phe.ndvi2[-1],phe.rbrat[-1],phe.red[-1],phe.relblue[-1],phe.relgreen[-1],phe.relred[-1],phe.rbograt[-1],  
                                  phe.rgobrat[-1],phe.rgrat[-1],phe.sipi[-1],phe.SR[-1],phe.wdvi[-1],as.numeric(plant.px),as.numeric(tot.px)) 
-phe.sat1.2506.soil <- data.frame(phe.blue$Group.1,as.matrix(phe.sat1.2506.soil))
-colnames(phe.sat1.2506.soil)[1] <- "accession"
-colnames(phe.sat1.2506.soil)[length(colnames(phe.sat1.2506.soil))-1]<-c("plant.px")
-colnames(phe.sat1.2506.soil)[length(colnames(phe.sat1.2506.soil))]<-c("tot.px")
+phe.sat1.2506.plant <- data.frame(phe.blue$Group.1,as.matrix(phe.sat1.2506.plant))
+colnames(phe.sat1.2506.plant)[1] <- "accession"
+colnames(phe.sat1.2506.plant)[length(colnames(phe.sat1.2506.plant))-1]<-c("plant.px")
+colnames(phe.sat1.2506.plant)[length(colnames(phe.sat1.2506.plant))]<-c("tot.px")
 
 # Plot correlation matrix
 png(filename = "cor_phe_sat1_2506.png",width = 1500, height = 1500)
-heatmap.2(cor(phe.sat1.2506.soil[,-1],use="complete.obs"),trace = "none",col = turbo(256),na.rm = T)
+heatmap.2(cor(phe.sat1.2506.plant[,-1],use="complete.obs"),trace = "none",col = turbo(256),na.rm = T)
 dev.off()
 
-phe.sat1.2506 <- phe.sat1.2506.soil
+phe.sat1.2506 <- phe.sat1.2506.plant
 
 save(phe.sat1.2506,file="Phenotypes_per_plot/obj_phe.sat1.2506.out")
-# write.xlsx(phe.sat1.2506.soil,file="Phenotypes_per_plot/phe_sat_rep1_2506.xlsx",rownames=T)
+# write.xlsx(phe.sat1.2506.plant,file="Phenotypes_per_plot/phe_sat_rep1_2506.xlsx",rownames=T)
 
 ###### IMPORTANT #########
 # The save rep2 part starts here.
 ###### IMPORTANT #########
 # sat rep2 2506
 
-phe.sat2.2506.soil <- data.frame(phe.ARVI[-1],phe.blue[-1],phe.cired[-1],phe.coltot[-1],phe.EVI[-1],phe.gborrat[-1],phe.gbrat[-1],phe.green[-1],phe.height[-1],phe.msp1[-1],phe.msp2[-1],phe.msp3[-1],    
+phe.sat2.2506.plant <- data.frame(phe.ARVI[-1],phe.blue[-1],phe.cired[-1],phe.coltot[-1],phe.EVI[-1],phe.gborrat[-1],phe.gbrat[-1],phe.green[-1],phe.height[-1],phe.msp1[-1],phe.msp2[-1],phe.msp3[-1],    
                                  phe.msp4[-1],phe.msp5[-1],phe.ndre[-1],phe.ndvi[-1],phe.ndvi2[-1],phe.rbrat[-1],phe.red[-1],phe.relblue[-1],phe.relgreen[-1],phe.relred[-1],phe.rbograt[-1],  
                                  phe.rgobrat[-1],phe.rgrat[-1],phe.sipi[-1],phe.SR[-1],phe.wdvi[-1],as.numeric(plant.px),as.numeric(tot.px)) 
-phe.sat2.2506.soil <- data.frame(phe.blue$Group.1,as.matrix(phe.sat2.2506.soil))
-colnames(phe.sat2.2506.soil)[1] <- "accession"
-colnames(phe.sat2.2506.soil)[length(colnames(phe.sat2.2506.soil))-1]<-c("plant.px")
-colnames(phe.sat2.2506.soil)[length(colnames(phe.sat2.2506.soil))]<-c("tot.px")
+phe.sat2.2506.plant <- data.frame(phe.blue$Group.1,as.matrix(phe.sat2.2506.plant))
+colnames(phe.sat2.2506.plant)[1] <- "accession"
+colnames(phe.sat2.2506.plant)[length(colnames(phe.sat2.2506.plant))-1]<-c("plant.px")
+colnames(phe.sat2.2506.plant)[length(colnames(phe.sat2.2506.plant))]<-c("tot.px")
 
-phe.sat2.2506 <- phe.sat2.2506.soil
+phe.sat2.2506 <- phe.sat2.2506.plant
 
 save(phe.sat2.2506,file="Phenotypes_per_plot/obj_phe.sat2.2506.out")
-# write.xlsx(phe.sat2.2506.soil,file="Phenotypes_per_plot/phe_sat_rep2_2506.xlsx",rownames=T)
+# write.xlsx(phe.sat2.2506.plant,file="Phenotypes_per_plot/phe_sat_rep2_2506.xlsx",rownames=T)
