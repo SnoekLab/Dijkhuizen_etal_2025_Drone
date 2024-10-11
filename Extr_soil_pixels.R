@@ -9,7 +9,7 @@ library(openxlsx)
 ###############
 #Day 1106 REP 1
 ###############
-load(file = "Robjects_plots/obj_all.pl_sat_rep1_0611_rgb_dsm_msp.out")
+load(file = "R_objects_plots/obj_all.pl_sat_rep1_0611_rgb_dsm_msp.out")
 
 # Here we obtain a logical with TRUE if EVI > 0.25 (plant pixels) and FALSE otherwise.
 evi.selc <- 2.5*((all.pl$msp5-all.pl$msp3)/(all.pl$msp5+6*all.pl$msp3+7.5*all.pl$msp1+1))>0.25
