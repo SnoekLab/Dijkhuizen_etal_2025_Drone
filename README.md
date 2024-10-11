@@ -34,8 +34,9 @@ Outputs: TBD <br>
 
 ### *Make_gwas_matrix.R*
 Merges all dataframes from previous steps into one big dataframe we use as input for the GWAS. <br>
-Inputs: TBD <br>
-Outputs: TBD <br>
+Inputs: Corrected_phenotypes/ "obj.phe.cor.sat1.1106.out", "obj.phe.cor.sat2.1106.out", "obj.phe.cor.sat1.2506.out", "obj.phe.cor.sat2.2506.out"<br>
+This script currently also requires additional inputs. But I will change the script so it just requires these 4.
+Outputs: "phe.sat.mean.1106.2506.diff.include.rat.out" The dataframe with all phenotypes which will be used as input for the GWAS <br>
 
 ### *cor_gwas_massive_sativa_all_snps.R*
 Perform the GWAS on all sativa data.<br>
