@@ -8,11 +8,10 @@ library(openxlsx)
 load(file="obj_metawco.out")
 
 # Load in phenotypes soil and plants.
-load(file = "Phenotypes_full/obj_phe.sat1.1106.out")
-load(file = "Phenotypes_full_soil/obj_phe.sat1.1106.soil.out")
+load(file = "Phenotypes_per_plot/obj_phe.sat1.1106.out")
+load(file = "phenotypes_soil/obj_phe.sat1.1106.soil.out")
 
 # Let's first show why we need to correct the height:
-
 height_frame <- data.frame(Accession = 1:194,Height = phe.sat1.1106.soil$height.mean)
 
 height_plot <- ggplot(height_frame, aes(x = Accession,y = Height))+
