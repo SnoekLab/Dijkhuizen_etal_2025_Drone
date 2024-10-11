@@ -1,6 +1,7 @@
-# This script extracts the soil pixels.
-# This is necessary because the next script, "correct_heights.R".
-# Uses this to correct for small differences in elevation between the plots.
+# This script extracts the soil pixels. And extracts all phenotypes.
+# The only phenotype from the soil pixels we actually use for the paper is the height.
+# We use the height in the next script, "correct_heights.R".
+# Here we use the height to correct for small differences in elevation between the different plots.
 # There are 4 blocks of code here. two for day 1106 and 2506 and two for rep1 and 2.
 
 library(openxlsx)
