@@ -15,7 +15,11 @@ Takes dataframe from previous script and extracts the phenotypes, color, color r
 Inputs: "obj_all.pl_sat_rep1_1106_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_1106_rgb_dsm_msp_red_nd.out",<br> "obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out" <br>
 Dataframes containing for every pixel the RGB values, the MSP values, the height, and what accession they belong to. <br>
 Outputs: "obj_phe.sat1.1106.out", "obj_phe.sat2.1106.out", "obj_phe.sat1.2506.out", obj_phe.sat2.2506.out, dataframes containing the phenotypes of all accessions.
-<code style="color:red">The script to combine both reps into one is still missing.</code>
+
+### *Extr_soil_pixels.R*
+Outputs the soil pixels seperated from the plant pixels. This is necessary for the height correction in next step. <br>
+Inputs: "obj_all.pl_sat_rep1_1106_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_1106_rgb_dsm_msp_red_nd.out",<br> "obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out", "obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out" <br>
+Outputs: "obj_phe.sat1.1106.soil.out", "obj_phe.sat2.1106.soil.out", "obj_phe.sat1.2506.soil.out", obj_phe.sat2.2506.soil.out, dataframes containing the soil pixel. <br>
 
 ### *Correct_heights.R*
 The different plots have slightly different elevation. This script corrects for that. <br>
@@ -28,7 +32,7 @@ Calculates the absolute differences, the log2 fold change differences and merges
 Inputs: TBD <br>
 Outputs: TBD <br>
 
-### *Make_gwas_+matrix.R*
+### *Make_gwas_matrix.R*
 Merges all dataframes from previous steps into one big dataframe we use as input for the GWAS. <br>
 Inputs: TBD <br>
 Outputs: TBD <br>
