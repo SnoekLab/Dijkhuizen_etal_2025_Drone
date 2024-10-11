@@ -23,8 +23,13 @@ Inputs: "obj_phe.sat1.1106.out", "obj_phe.sat2.1106.out", "obj_phe.sat1.2506.out
 "obj_phe.sat1.1106.soil.out", "obj_phe.sat2.1106.soil.out", "obj_phe.sat1.2506.soil.out", obj_phe.sat2.2506.soil.out <br>
 Outputs: "obj.phe.cor.sat1.1106.out", "obj.phe.cor.sat2.1106.out", "obj.phe.cor.sat1.2506.out", "obj.phe.cor.sat2.2506.out"
 
-### *Difference_tp.R*
+### *Difference_tp.R OR Difference_calculation.R*
 Calculates the absolute differences, the log2 fold change differences and merges both reps into one mean result for the GWAS step. <br>
+Inputs: TBD <br>
+Outputs: TBD <br>
+
+### *Make_gwas_+matrix.R*
+Merges all dataframes from previous steps into one big dataframe we use as input for the GWAS. <br>
 Inputs: TBD <br>
 Outputs: TBD <br>
 
