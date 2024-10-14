@@ -4,14 +4,15 @@
 library(ggplot2)
 library(openxlsx)
 
-# Load in metadata
-load(file="obj_metawco.out")
+###
+# First we show why we need to correct for soil height.
+# This part is optional when running this script.
+###
 
 # Load in phenotypes soil and plants.
 load(file = "Phenotypes_per_plot/obj_phe.sat1.1106.out")
 load(file = "phenotypes_soil/obj_phe.sat1.1106.soil.out")
 
-# Let's first show why we need to correct the height:
 height_frame <- data.frame(Accession = 1:194,Height = phe.sat1.1106.soil$height.mean)
 
 height_plot <- ggplot(height_frame, aes(x = Accession,y = Height))+
@@ -25,9 +26,7 @@ height_plot <- ggplot(height_frame, aes(x = Accession,y = Height))+
   ylab("Mean height soil")+
   xlim(0,194)
 
-png(filename = "Mean_height_sat1_1106.png",width = 750, height = 500)
 height_plot
-dev.off()
 
 height_frame <- data.frame(Accession = 1:194,Height = phe.sat1.1106$height.mean)
 
@@ -42,57 +41,17 @@ height_plot <- ggplot(height_frame, aes(x = Accession,y = Height))+
   ylab("Mean height plant")+
   xlim(0,194)
 
-png(filename = "Mean_plant_height_sat1_1106.png",width = 750, height = 500)
 height_plot
-dev.off()
 
-
-# Clearly, the height of the soil depends on the accession (because they were grown in different parts
-# of the field). Let's plot the height of the soil as a function of the longitude, to investigate the relationship
-# between the location of the plot and the height of the soil.
-
-meta <- metawco[order(as.numeric(substring(metawco$Accession,3))),]
-
-# Get frame with accessions in order and the corners of the plots in which they're grown.
-order_pos_frame <- meta[meta$Species=="sativa"&meta$rep==1,c("Accession","corner1.X","corner1.Y","corner2.X","corner2.Y","corner3.X","corner3.Y","corner4.X","corner4.Y")]
-
-# At the center of the plots to the frame.
-order_pos_frame <- data.frame(order_pos_frame,x_center = (order_pos_frame$corner1.X+order_pos_frame$corner3.X)/2,y_center = (order_pos_frame$corner1.Y+order_pos_frame$corner3.Y)/2)
-
-long_vs_height <- ggplot(order_pos_frame,aes(x = x_center, y = phe.sat1.1106.soil$height.mean))+
-  geom_point()+
-  geom_smooth(color = "black")+
-  theme_minimal()+
-  theme(text = element_text(size = 20),
-        panel.border = element_rect(colour = "black", fill = NA))+
-  xlab("Longitude plot")+
-  ylab("Mean height soil")
-
-long_vs_height_gam <- ggplot(order_pos_frame,aes(x = x_center, y = phe.sat1.1106.soil$height.mean))+
-  geom_point()+
-  geom_smooth(color = "black",method = "gam")+
-  theme_minimal()+
-  theme(text = element_text(size = 20),
-        panel.border = element_rect(colour = "black", fill = NA))+
-  xlab("Longitude plot")+
-  ylab("Mean height soil")
-
-png(filename = "longitude_vs_height.png",width = 600, height = 500)
-long_vs_height
-dev.off()
-
-png(filename = "longitude_vs_height_gam.png",width = 600, height = 500)
-long_vs_height_gam
-dev.off()
-
-# The less flexible fit shows that there's a slightly higher soil in the middle of the field in terms of 
-# longitude, while the more flexible fit reveals more detail. Using the latitud of plots results in almost
-# identical figures because the longitude and latitude are obviously strongly correlated (cor = 0.999).
-
+###
+# Clearly, the height of the soil depends on the accession 
+#(because they were grown in different parts of the field). 
 # Having shown that we need to correct for soil height, let's do this now. Simply substracting the soil height
 # from the plant height and than recalculating the summary statistics should do the trick.
+# Optional part over
+###
 
-# Function to extract phenotypes.
+# Function to extract phenotypes
 phe.extr <- function(phe.raw){
   phe.mean <- mean(phe.raw,na.rm = T)
   phe.mean.tr5 <- mean(phe.raw,na.rm = T,trim = 0.05)
@@ -123,9 +82,6 @@ rm(all.pl)
 load(file = "R_objects_plots/obj_all.pl_sat_rep2_0611_rgb_dsm_msp.out")
 all.pl.rep2 <- all.pl
 rm(all.pl)
-
-colnames(all.pl.rep1)[10] <- "msp1"
-colnames(all.pl.rep2)[10] <- "msp1"
 
 # Here we obtain a logical with TRUE if EVI > 0.25 (plant pixels) and FALSE otherwise.
 evi.selc.rep1 <- 2.5*((all.pl.rep1$msp5-all.pl.rep1$msp3)/(all.pl.rep1$msp5+6*all.pl.rep1$msp3+7.5*all.pl.rep1$msp1+1))>0.25
@@ -164,15 +120,15 @@ ano.height$`Sum Sq`[1]/sum(ano.height$`Sum Sq`)
 
 height_frame <- data.frame(Accession = 1:194,Height = phe.height.cor.rep1$height[,1])
 
-load(file = "Phenotypes_full/obj_phe.sat1.1106.out")
-load(file = "Phenotypes_full/obj_phe.sat2.1106.out")
+load(file = "Phenotypes_per_plot/obj_phe.sat1.1106.out")
+load(file = "Phenotypes_per_plot/obj_phe.sat2.1106.out")
 
 # Calculate heritability non-corrected height.
 ano.height.nocor <-  anova(lm(c(phe.sat1.1106$height.trimmed_mean_10,phe.sat2.1106$height.trimmed_mean_10)~c(phe.sat1.1106$accession,phe.sat2.1106$accession)))
 ano.height.nocor$`Sum Sq`[1]/sum(ano.height.nocor$`Sum Sq`)
 
-load(file = "Phenotypes_full_soil/obj_phe.sat1.1106.soil.out")
-load(file = "Phenotypes_full_soil/obj_phe.sat2.1106.soil.out")
+load(file = "phenotypes_soil/obj_phe.sat1.1106.soil.out")
+load(file = "phenotypes_soil/obj_phe.sat2.1106.soil.out")
 
 # Calculate heritabilty soil height.
 ano.height.soil <-  anova(lm(c(phe.sat1.1106.soil$height.trimmed_mean_10,phe.sat2.1106.soil$height.trimmed_mean_10)~c(phe.sat1.1106.soil$accession,phe.sat2.1106.soil$accession)))
@@ -189,8 +145,8 @@ phe.sat2.1106 <- data.frame(phe.sat2.1106,as.matrix(phe.height.cor.rep2[-1]))
 save(phe.sat1.1106,file = "corrected_phenotypes/obj.phe.cor.sat1.1106.out")
 save(phe.sat2.1106,file = "corrected_phenotypes/obj.phe.cor.sat2.1106.out")
 
-write.xlsx(phe.sat1.1106,file="corrected_phenotypes/phe_sat1_1106.xlsx",rownames=T)
-write.xlsx(phe.sat2.1106,file="corrected_phenotypes/phe_sat2_1106.xlsx",rownames=T)
+#write.xlsx(phe.sat1.1106,file="corrected_phenotypes/phe_sat1_1106.xlsx",rownames=T)
+#write.xlsx(phe.sat2.1106,file="corrected_phenotypes/phe_sat2_1106.xlsx",rownames=T)
 
 ### Sativa 2506
 
@@ -239,15 +195,15 @@ ano.height <- anova(lm(c(phe.height.cor.rep1$height[,3],phe.height.cor.rep2$heig
 
 ano.height$`Sum Sq`[1]/sum(ano.height$`Sum Sq`)
 
-load(file = "Phenotypes_full/obj_phe.sat1.2506.out")
-load(file = "Phenotypes_full/obj_phe.sat2.2506.out")
+load(file = "Phenotypes_per_plot/obj_phe.sat1.2506.out")
+load(file = "Phenotypes_per_plot/obj_phe.sat2.2506.out")
 
 # Calculate heritability non-corrected height.
 ano.height.nocor <-  anova(lm(c(phe.sat1.2506$height.trimmed_mean_10,phe.sat2.2506$height.trimmed_mean_10)~c(phe.sat1.2506$accession,phe.sat2.2506$accession)))
 ano.height.nocor$`Sum Sq`[1]/sum(ano.height.nocor$`Sum Sq`)
 
-load(file = "Phenotypes_full_soil/obj_phe.sat1.2506.soil.out")
-load(file = "Phenotypes_full_soil/obj_phe.sat2.2506.soil.out")
+load(file = "phenotypes_soil/obj_phe.sat1.2506.soil.out")
+load(file = "phenotypes_soil/obj_phe.sat2.2506.soil.out")
 
 # Calculate heritabilty soil height.
 ano.height.soil <-  anova(lm(c(phe.sat1.2506.soil$height.trimmed_mean_10,phe.sat2.2506.soil$height.trimmed_mean_10)~c(phe.sat1.2506.soil$accession,phe.sat2.2506.soil$accession)))
@@ -264,5 +220,5 @@ phe.sat2.2506 <- data.frame(phe.sat2.2506,as.matrix(phe.height.cor.rep2[-1]))
 save(phe.sat1.2506,file = "corrected_phenotypes/obj.phe.cor.sat1.2506.out")
 save(phe.sat2.2506,file = "corrected_phenotypes/obj.phe.cor.sat2.2506.out")
 
-write.xlsx(phe.sat1.2506,file="corrected_phenotypes/phe_sat1_2506.xlsx",rownames=T)
-write.xlsx(phe.sat2.2506,file="corrected_phenotypes/phe_sat2_2506.xlsx",rownames=T)
+#write.xlsx(phe.sat1.2506,file="corrected_phenotypes/phe_sat1_2506.xlsx",rownames=T)
+#write.xlsx(phe.sat2.2506,file="corrected_phenotypes/phe_sat2_2506.xlsx",rownames=T)
