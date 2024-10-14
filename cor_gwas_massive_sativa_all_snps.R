@@ -1,5 +1,3 @@
-.libPaths("~/R/x86_64-pc-linux-gnu-library/3.6")
-
 library(Matrix)
 library(MASS)
 library(ggplot2)
@@ -407,9 +405,9 @@ GWAS <- function(genotypes, trait, phenotype.name,snp.info, kinship, out.dir) {
   dev.off()
 }
 
-load("~/Documents/lettuce/GWAS_objects/phe.sat.mean.1106.2506.diff.include.rat.out")
+load("GWAS_objects/phe.sat.mean.1106.2506.diff.include.rat.out")
 #Instead of loading this file here we manually code what accession numbers we use.
-#load("~/Documents/lettuce/GWAS_objects/sat.accessions.out")
+#load("GWAS_objects/sat.accessions.out")
 accessions <- c("LK001", "LK002", "LK003", "LK004", "LK005", "LK006", "LK007", "LK008",
                 "LK009", "LK010", "LK011", "LK012", "LK013", "LK014", "LK015", "LK016",
                 "LK017", "LK018", "LK019", "LK020", "LK021", "LK022", "LK023", "LK024",
@@ -436,7 +434,27 @@ accessions <- c("LK001", "LK002", "LK003", "LK004", "LK005", "LK006", "LK007", "
                 "LK191", "LK192", "LK193", "LK194", "LK195", "LK196", "LK197", "LK198",
                 "LK199", "LK200")
 
-usemat <- load("~/Documents/lettuce/GWAS_objects/obj_all.ALTREF.out")
+# Generate the kinship matrix by taking the covariance of the SNPs
+usemat <- load("GWAS_objects/obj_all.ALTREF.out")
+usemat <- eval(parse(text=usemat))
+usemat <- usemat[,-c(1:10)]
+usemat <- as.matrix(t(usemat))
+
+usemat <- usemat[rownames(usemat)%in%accessions,]
+usemat[usemat == 9] <- 1
+usemat <- t(usemat)
+kinship <- cov(usemat)
+
+rownames(kinship) <- accessions
+colnames(kinship) <- accessions
+
+save(kinship,file = "GWAS_objects/cov_new_snps.out")
+
+#If you ran this script previously you can use this line to spare time
+#load("GWAS_objects/cov_new_snps.out") 
+letkin <- kinship
+
+usemat <- load("GWAS_objects/obj_all.ALTREF.out")
 usemat <- eval(parse(text=usemat))
 snp.info <- usemat[,c(1,7)]
 usemat <- usemat[,-c(1:10)]
@@ -446,10 +464,7 @@ usemat <- usemat[rownames(usemat)%in%accessions,]
 
 usemat[usemat == 9] <- 1
 
-load("~/Documents/lettuce/GWAS_objects/cov_new_snps.out") ##We generated the kinship matrix by taking the covariance of the SNPs
-letkin <- kinship
-
-mclapply(1:ncol(sat.full), function(x) GWAS(genotypes = usemat, trait = as.vector(sat.full[,x]), phenotype.name = gsub(".","_",colnames(sat.full)[x],fixed = T), kinship=letkin, snp.info = snp.info,out.dir = "/hosts/linuxhome/mutant12/tmp/Bramve/GWAS_sat"),mc.cores = 40)
+mclapply(1:ncol(sat.full), function(x) GWAS(genotypes = usemat, trait = as.vector(sat.full[,x]), phenotype.name = gsub(".","_",colnames(sat.full)[x],fixed = T), kinship=letkin, snp.info = snp.info,out.dir = "/GWAS_sat"),mc.cores = 40)
 
 # sat.full.log <- sat.full
 # sat.full.log[sat.full.log==0]<- sat.full.log[sat.full.log==0]+0.01
