@@ -4,6 +4,11 @@
 library(ggplot2)
 library(openxlsx)
 
+# Create output folder if it doesn't exist already
+if (!dir.exists("corrected_phenotypes")){
+  dir.create("corrected_phenotypes")
+}
+
 ###
 # First we show why we need to correct for soil height.
 # This part is optional when running this script.

@@ -1,5 +1,10 @@
 library(openxlsx)
 
+# Create output folder if it doesn't exist already
+if (!dir.exists("Differences_all")){
+  dir.create("Differences_all")
+}
+
 ########### First substracting
 
 ### Sativa rep 1 differences

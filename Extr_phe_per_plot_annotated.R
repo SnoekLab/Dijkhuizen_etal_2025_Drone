@@ -12,6 +12,11 @@ library(openxlsx)
 library(gplots)
 library(cowplot)
 
+# Create output folder if it doesn't exist already
+if (!dir.exists("Phenotypes_per_plot")){
+  dir.create("Phenotypes_per_plot")
+}
+
 ###############################################################################
 # Day 1106, REP 1
 ###############################################################################

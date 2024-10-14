@@ -465,15 +465,3 @@ usemat <- usemat[rownames(usemat)%in%accessions,]
 usemat[usemat == 9] <- 1
 
 mclapply(1:ncol(sat.full), function(x) GWAS(genotypes = usemat, trait = as.vector(sat.full[,x]), phenotype.name = gsub(".","_",colnames(sat.full)[x],fixed = T), kinship=letkin, snp.info = snp.info,out.dir = "/GWAS_sat"),mc.cores = 40)
-
-# sat.full.log <- sat.full
-# sat.full.log[sat.full.log==0]<- sat.full.log[sat.full.log==0]+0.01
-# sat.full.log <- log2((abs(sat.full.log))^(sign(sat.full.log)))
-# 
-# colnames(sat.full.log) <- paste0(colnames(sat.full.log),rep("_log",ncol(sat.full.log)))
-
-# mclapply(1:ncol(sat.full.log), function(x) GWAS(genotypes = usemat, trait = as.vector(sat.full.log[,x]), phenotype.name = gsub(".","_",colnames(sat.full.log)[x],fixed = T), kinship=letkin, snp.info = snp.info,out.dir = "/linuxhome/tmp/Bramve/GWAS_sat_log"),mc.cores = 40)
-
-
-
-

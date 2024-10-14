@@ -6,6 +6,11 @@
 
 library(openxlsx)
 
+# Create output folder if it doesn't exist already
+if (!dir.exists("phenotypes_soil")){
+  dir.create("phenotypes_soil")
+}
+
 ###############
 #Day 1106 REP 1
 ###############

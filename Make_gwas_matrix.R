@@ -1,3 +1,8 @@
+# Create output folder if it doesn't exist already
+if (!dir.exists("GWAS_objects")){
+  dir.create("GWAS_objects")
+}
+
 load(file = "corrected_phenotypes/obj.phe.cor.sat1.1106.out")
 load(file = "corrected_phenotypes/obj.phe.cor.sat2.1106.out")
 
