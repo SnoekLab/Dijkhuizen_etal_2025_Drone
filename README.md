@@ -27,20 +27,21 @@ Inputs: "obj_phe.sat1.1106.out", "obj_phe.sat2.1106.out", "obj_phe.sat1.2506.out
 "obj_phe.sat1.1106.soil.out", "obj_phe.sat2.1106.soil.out", "obj_phe.sat1.2506.soil.out", obj_phe.sat2.2506.soil.out <br>
 Outputs: "obj.phe.cor.sat1.1106.out", "obj.phe.cor.sat2.1106.out", "obj.phe.cor.sat1.2506.out", "obj.phe.cor.sat2.2506.out"
 
-### *Difference_tp.R OR Difference_calculation.R*
+### *Difference_calculation.R*
 Calculates the absolute differences, the log2 fold change differences and merges both reps into one mean result for the GWAS step. <br>
-Inputs: TBD <br>
-Outputs: TBD <br>
+Inputs: "obj.phe.cor.sat1.1106.out", "obj.phe.cor.sat2.1106.out", "obj.phe.cor.sat1.2506.out", "obj.phe.cor.sat2.2506.out" <br>
+all phenotypes, with correction for soil height. <br>
+Outputs: "sat1.diff.phe.out", "sat2.diff.phe.out", "sat1.dira.phe.out", "sat2.dira.phe.out" <br>
+Absolute and log2 fold change differences for both reps.
 
 ### *Make_gwas_matrix.R*
 Merges all dataframes from previous steps into one big dataframe we use as input for the GWAS. <br>
-Inputs: Corrected_phenotypes/ "obj.phe.cor.sat1.1106.out", "obj.phe.cor.sat2.1106.out", "obj.phe.cor.sat1.2506.out", "obj.phe.cor.sat2.2506.out"<br>
-This script currently also requires additional inputs. But I will change the script so it just requires these 4.
+Inputs: "obj.phe.cor.sat1.1106.out", "obj.phe.cor.sat2.1106.out", "obj.phe.cor.sat1.2506.out", "obj.phe.cor.sat2.2506.out"<br>
 Outputs: "phe.sat.mean.1106.2506.diff.include.rat.out" The dataframe with all phenotypes which will be used as input for the GWAS <br>
 
 ### *cor_gwas_massive_sativa_all_snps.R*
 Perform the GWAS on all sativa data.<br>
-Inputs: "phe.sat.mean.1106.2506.diff.include.rat.out" dataframe containing all the phenotypes we perform GWAS on, "obj_all.ALTREF.out" SNPmap, "cov_new_snps.out" kinship matrix. <br>
+Inputs: "phe.sat.mean.1106.2506.diff.include.rat.out" dataframe containing all the phenotypes we perform GWAS on, "obj_all.ALTREF.out" SNPmap. <br>
 Outputs: The GWAS results of every singel traits. Output as a dataframe and a simple manhattanplot.
 
 ### *manhat_manhat_sat_nolog_new_snps.R*
@@ -75,5 +76,5 @@ obj_day1.rep1_sat_rep1_1106_rgb_dsm_msp.out, obj_day2.rep1_sat_rep1_2506_rgb_dsm
 Outputs: Plot of the chosen accessions.
 
 # Issues to resolve: <br>
-Go over correct_heights.R and Difference_tp.R <br>
-Once that is done run all the code and make sure that the results are still correct.
+Everything has been tested and outputs the correct results! <br>
+Minor issue, the scripts assume you have the correct folder structure. 
