@@ -1,4 +1,4 @@
-.libPaths("~/R/x86_64-pc-linux-gnu-library/3.6")
+#This script reads in all individual results and combines them into one object
 
 library(ggplot2)
 library(stringr)
@@ -7,7 +7,7 @@ library(viridis)
 
 load("GWAS_objects/obj_all.ALTREF.out")
 #Instead of loading this file here we manually code what accession numbers we use.
-#load("~/Documents/lettuce/GWAS_objects/sat.accessions.out")
+#load("GWAS_objects/sat.accessions.out")
 accessions <- c("LK001", "LK002", "LK003", "LK004", "LK005", "LK006", "LK007", "LK008",
                 "LK009", "LK010", "LK011", "LK012", "LK013", "LK014", "LK015", "LK016",
                 "LK017", "LK018", "LK019", "LK020", "LK021", "LK022", "LK023", "LK024",
@@ -102,5 +102,5 @@ chr <- snp.info[max.snps,1]
 plot.frame <- data.frame(Phenotype = pheno,Chromosome = chr,Position = pos/10^7,Pval=pvalues)
 
 save(plot.frame,file = "Clustering/cluster_new_snps/manhat.manhat.nolog.sat.new.snps.out")
-write.csv(plot.frame,file = "Clustering/cluster_new_snps/peaks_sativa_nolog_new_snps.csv")
+#write.csv(plot.frame,file = "Clustering/cluster_new_snps/peaks_sativa_nolog_new_snps.csv")
 
