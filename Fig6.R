@@ -4,7 +4,7 @@ library(openxlsx)
 library(cowplot)
 
 #Load in the data
-plot.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", "height.traits")
+plot.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Supplemental_data.xlsx", "height.traits")
 load(file="Robjects_allpl/obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out") # The images
 
 ## make pseudo points to get the right facet panel size

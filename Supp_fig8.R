@@ -6,12 +6,12 @@ library(viridis)
 library(stringr)
 
 #Load in the data
-plot.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", "pvalues")
+plot.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Supplemental_data.xlsx", "pvalues")
 plot.frame <- subset(plot.frame, select = -c(mean_clustering))
 plot.frame <- na.omit(plot.frame)
 head(plot.frame)
 #Locations of prominent peaks:
-rectangles <- data.frame(read.xlsx("D:/Drone-paper/Necessary_data.xlsx", sheet = "peaks.fig6"))
+rectangles <- data.frame(read.xlsx("D:/Drone-paper/Supplemental_data.xlsx", sheet = "peaks.fig6"))
 rectangles
 
 ### INCLUDE DAY and diff/dira as column 
@@ -86,8 +86,8 @@ ggsave("Script_per_figure/Figures/figure8e.png", width = 15, height = 15, units 
 # However, it is included for completeness sake.
 ###############################################################################
 # Here we also create the clustering on ALL traits instead of only the mean traits. This is used in supplement figure 8.
-plot.frame <- read.xlsx(xlsxFile = "D:/Drone-paper/Necessary_data.xlsx",sheet =  "pvalues")
-sat.full <- read.xlsx(xlsxFile = "D:/Drone-paper/Necessary_data.xlsx", sheet = "Phenotypes")
+plot.frame <- read.xlsx(xlsxFile = "D:/Drone-paper/Supplemental_data.xlsx",sheet =  "pvalues")
+sat.full <- read.xlsx(xlsxFile = "D:/Drone-paper/Supplemental_data.xlsx", sheet = "Phenotypes")
 
 sat.full.colnames <- sat.full$TraitID
 sat.full <- data.frame(t(sat.full[,-(1:4)]))

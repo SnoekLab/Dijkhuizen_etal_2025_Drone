@@ -4,11 +4,11 @@ library(openxlsx)
 library(cowplot)
 library(viridis)
 
-plot.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", sheet =  "pvalues")
+plot.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Supplemental_data.xlsx", sheet =  "pvalues")
 plot.frame <- plot.frame[!is.na(plot.frame$mean_clustering),]
 head(plot.frame)
 #Locations of prominent peaks, annotated with rectangles:
-rectangles <- data.frame(read.xlsx("D:/Drone-paper/Necessary_data.xlsx", sheet = "peaks.fig5"))
+rectangles <- data.frame(read.xlsx("D:/Drone-paper/Supplemental_data.xlsx", sheet = "peaks.fig5"))
 
 ### INCLUDE DAY and diff/dira as column 
 obs <- rep(NA,nrow(plot.frame))

@@ -5,11 +5,11 @@ library(ggplot2)
 library(viridis)
 
 # Load in the data
-height.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", sheet =  "Height.mean.day2")
-gbrat.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", sheet = "gbrat.mean.day2")
-rededge.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", sheet = "rededge.mean.day2")
+height.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Supplemental_data.xlsx", sheet =  "Height.mean.day2")
+gbrat.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Supplemental_data.xlsx", sheet = "gbrat.mean.day2")
+rededge.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Supplemental_data.xlsx", sheet = "rededge.mean.day2")
 #Locations of prominent peaks, annotated with colored rectangles:
-rectangles <- data.frame(read.xlsx("D:/Drone-paper/Necessary_data.xlsx", sheet = "peaks.fig4"))
+rectangles <- data.frame(read.xlsx("D:/Drone-paper/Supplemental_data.xlsx", sheet = "peaks.fig4"))
 
 
  # make vector with trait names

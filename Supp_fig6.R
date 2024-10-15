@@ -5,9 +5,9 @@ library(cowplot)
 library(ggplot2)
 library(viridis)
 
-height.day1.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", sheet =  "Height.mean.day1")
-height.day2.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", sheet =  "Height.mean.day2")
-height.change.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Necessary_data.xlsx", sheet =  "Height.mean.change")
+height.day1.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Supplemental_data.xlsx", sheet =  "Height.mean.day1")
+height.day2.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Supplemental_data.xlsx", sheet =  "Height.mean.day2")
+height.change.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Supplemental_data.xlsx", sheet =  "Height.mean.change")
 
 # make vector with trait names
 Trait <- c(rep("Height day-78",nrow(height.day1.frame)),rep("Height day-93",nrow(height.day2.frame)),rep("Height change",nrow(height.change.frame)))

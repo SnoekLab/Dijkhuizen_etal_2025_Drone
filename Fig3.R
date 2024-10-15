@@ -6,8 +6,8 @@ library(viridis)
 library(cowplot)
 
 # Load in data
-plot.frame <- read.xlsx(xlsxFile = "D:/Drone-paper/Necessary_data.xlsx",sheet =  "pvalues")
-sat.full <- read.xlsx(xlsxFile = "D:/Drone-paper/Necessary_data.xlsx", sheet = "Phenotypes")
+plot.frame <- read.xlsx(xlsxFile = "D:/Drone-paper/Supplemental_data.xlsx",sheet =  "pvalues")
+sat.full <- read.xlsx(xlsxFile = "D:/Drone-paper/Supplemental_data.xlsx", sheet = "Phenotypes")
 
 sat.full.colnames <- sat.full$TraitID
 sat.full <- data.frame(t(sat.full[,-(1:4)]))

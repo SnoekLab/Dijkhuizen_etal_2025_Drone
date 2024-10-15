@@ -6,14 +6,14 @@ library(ggplot2)
 library(viridis)
 library(openxlsx)
 library(cowplot)
-sat.full <- read.xlsx(xlsxFile = "./DroneData2023/Necessary_data.xlsx", sheet = "Phenotypes")
+sat.full <- read.xlsx(xlsxFile = "D:/Drone-paper/Supplemental_data.xlsx", sheet = "Phenotypes")
 
 sat.full.colnames <- sat.full$TraitID
 sat.full <- data.frame(t(sat.full[,-(1:4)]))
 colnames(sat.full) <- sat.full.colnames
 
 
-LK.info <- read.xlsx(xlsxFile = "./DroneData2023/Necessary_data.xlsx", sheet = "LK_lines")
+LK.info <- read.xlsx(xlsxFile = "D:/Drone-paper/Supplemental_data.xlsx", sheet = "LK_lines")
 
 LK.info <- LK.info[LK.info$LKID%in%rownames(sat.full),]
 
