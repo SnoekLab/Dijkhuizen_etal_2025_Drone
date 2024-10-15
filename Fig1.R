@@ -1,4 +1,6 @@
-## Script to make figure 1. Examples of all lettuce morphology types
+## Script to make figure 1. Examples of all lettuce morphology types.
+# This script requires the dataframes containing the image data.
+# These are the same files as used in "Extr_phe_per_plot_annotated.R".
 library(ggplot2)
 library(cowplot)
 
