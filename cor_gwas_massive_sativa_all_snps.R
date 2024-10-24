@@ -11,6 +11,7 @@ library(parallel)
 library(tictoc)
 library(dplyr)
 options(scipen = 999)
+cores.available = 30 #Set this number to the amount of cores available. For Windows systems 1 is recommended!
 
 matlm_pred3 <- function (x, ind = NULL, num_batches = 1, batch_size = NULL, 
                          path_pred = ".", ...) 
@@ -464,4 +465,4 @@ usemat <- usemat[rownames(usemat)%in%accessions,]
 
 usemat[usemat == 9] <- 1
 
-mclapply(1:ncol(sat.full), function(x) GWAS(genotypes = usemat, trait = as.vector(sat.full[,x]), phenotype.name = gsub(".","_",colnames(sat.full)[x],fixed = T), kinship=letkin, snp.info = snp.info,out.dir = "/GWAS_sat"),mc.cores = 40)
+mclapply(1:ncol(sat.full), function(x) GWAS(genotypes = usemat, trait = as.vector(sat.full[,x]), phenotype.name = gsub(".","_",colnames(sat.full)[x],fixed = T), kinship=letkin, snp.info = snp.info,out.dir = "/GWAS_sat"),mc.cores = cores.available)
