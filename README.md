@@ -75,6 +75,7 @@ Inputs: Choose one of the following depending on what day and rep you want: <br>
 obj_day1.rep1_sat_rep1_1106_rgb_dsm_msp.out, obj_day2.rep1_sat_rep1_2506_rgb_dsm_msp_red_nd.out, obj_day1.rep2_sat_rep1_1106_rgb_dsm_msp.out, obj_day2.rep2_sat_rep1_2506_rgb_dsm_msp_red_nd.out
 Outputs: Plot of the chosen accessions.
 
-# Issues to resolve: <br>
-Everything has been tested and outputs the correct results! <br>
-Minor issue, the scripts assume you have the correct folder structure. 
+### *H2_2023.R*
+Calculated the heritability of all traits. <br>
+Inputs: "obj.phe.cor.sat1.1106.out", "obj.phe.cor.sat2.1106.out", "obj.phe.cor.sat1.2506.out", "obj.phe.cor.sat2.2506.out"<br>
+Outputs: "h2.collect.v4.xlsx" Excel file containing the heritabilities for all traits.
