@@ -44,7 +44,7 @@ Perform the GWAS on all sativa data.<br>
 Inputs: "phe.sat.mean.1106.2506.diff.include.rat.out" dataframe containing all the phenotypes we perform GWAS on, "obj_all.ALTREF.out" SNPmap. <br>
 Outputs: The GWAS results of every singel traits. Output as a dataframe and a simple manhattanplot.
 
-### *manhat_manhat_sat_nolog_new_snps.R*
+### *manhat_manhat_sat_nolog_new_snps.R* 
 Reads in all individual GWAS results, and outputs all significant results in 1 frame. <br>
 Inputs: "obj_all.ALTREF.out" SNPmap, All individual GWAS results. <br>
 Outputs: manhat.manhat.nolog.saw.new.snps.out all frames aggregated into one large dataframe.
