@@ -205,7 +205,7 @@ fig.gbrat.mean.rat <- ggplot(to.pl[to.pl$Day == "Ratio",])+
   scale_y_continuous()+
   scale_color_manual(values = c("black","grey60"),guide = "none")+
   scale_fill_manual(values = turbo(8)[2:8],guide = "none")+
-  ylab("Log2 Log2 Green/Blue ratio ratio")+
+  ylab("Log2 Mean Green/Blue ratio ratio")+
   theme_cowplot()+
   theme(panel.background = element_rect(linewidth = 0.2,color="black"),
         axis.line = element_blank(),
