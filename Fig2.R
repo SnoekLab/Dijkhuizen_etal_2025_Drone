@@ -24,7 +24,7 @@ height.mean.dira <- sat.full$height.mean.dira
 Pheno.value <- c(height.mean.1106,height.mean.2506,height.mean.dira)
 Day <- rep(c(rep("Day 78",nrow(LK.info)),rep("Day 93",nrow(LK.info)),rep("Ratio",nrow(LK.info))))
 LKid <- rep(LK.info$LKID,3)
-Type <- rep(LK.info$Subgroup_SB,3)
+Type <- rep(LK.info$Morphology.type,3)
 ## figure 
 
 to.pl <- data.frame(LKid,Type,Day,Pheno.value)
