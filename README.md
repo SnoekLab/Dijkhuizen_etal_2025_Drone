@@ -47,7 +47,7 @@ Outputs: The GWAS results of every singel traits. Output as a dataframe and a si
 ### *manhat_manhat_sat_nolog_new_snps.R* 
 Reads in all individual GWAS results, and outputs all significant results in 1 frame. <br>
 Inputs: "obj_all.ALTREF.out" SNPmap, All individual GWAS results. <br>
-Outputs: manhat.manhat.nolog.saw.new.snps.out all frames aggregated into one large dataframe.
+Outputs: "manhat.manhat.nolog.saw.new.snps.out" all frames aggregated into one large dataframe.
 
 ## Scripts to generate the figures
 ***Fig1.R*** &emsp; Script to generate figure 1<br>
@@ -79,3 +79,16 @@ Outputs: Plot of the chosen accessions.
 Calculated the heritability of all traits. <br>
 Inputs: "obj.phe.cor.sat1.1106.out", "obj.phe.cor.sat2.1106.out", "obj.phe.cor.sat1.2506.out", "obj.phe.cor.sat2.2506.out"<br>
 Outputs: "h2.collect.v4.xlsx" Excel file containing the heritabilities for all traits.
+
+### *select_mean_peaks.R*
+Script to extract the locations of the peaks using only the mean traits.<br>
+Inputs: "Supplemental_data.xlsx" <br>
+Outputs: "QTLsfig5.csv" file containing all peaks using mean traits. This was used for the sheet QTLs.fig5 and for table 3
+
+### *select_peaks.R*
+Script to extract the locations of the peaks using all extended descriptives. <br>
+Inputs: "Supplemental_data.xlsx" <br>
+Outputs: "QTLsall.csv" file containg all peaks using all extended descriptives. Used in the sheet QTLs.all and Supplemental figure 8.
+
+
+
