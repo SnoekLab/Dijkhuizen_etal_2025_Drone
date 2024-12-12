@@ -11,6 +11,7 @@ plot.frame <- na.omit(plot.frame)
 head(plot.frame)
 
 ### INCLUDE DAY and diff/dira as column 
+# Diff refers to the absoute difference while dira refers to the ratio between days
 obs <- rep(NA,nrow(plot.frame))
 obs[grepl("1106",plot.frame$Phenotype)] <- "Day1"
 obs[grepl("2506",plot.frame$Phenotype)] <- "Day2"
