@@ -37,6 +37,7 @@ Absolute and log2 fold change differences for both reps.
 ### *Make_gwas_matrix.R*
 Merges all dataframes from previous steps into one big dataframe we use as input for the GWAS. <br>
 Inputs: "obj.phe.cor.sat1.1106.out", "obj.phe.cor.sat2.1106.out", "obj.phe.cor.sat1.2506.out", "obj.phe.cor.sat2.2506.out"<br>
+"sat1.diff.phe.out", "sat2.diff.phe.out", "sat1.dira.phe.out", "sat2.dira.phe.out" <br>
 Outputs: "phe.sat.mean.1106.2506.diff.include.rat.out" The dataframe with all phenotypes which will be used as input for the GWAS <br>
 
 ### *cor_gwas_massive_sativa_all_snps.R*
