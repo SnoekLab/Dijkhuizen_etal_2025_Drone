@@ -15,8 +15,8 @@ if (!dir.exists("corrected_phenotypes")){
 ###
 
 # Load in phenotypes soil and plants.
-load(file = "Phenotypes_per_plot/obj_phe.sat1.1106.out")
-load(file = "phenotypes_soil/obj_phe.sat1.1106.soil.out")
+load(file = "Phenotypes_per_plot/obj_pheno.sat_rep1.1106.R4.3.2.out")
+load(file = "phenotypes_soil/obj_pheno.sat_rep1.1106.soil.R4.3.2.out")
 
 height_frame <- data.frame(Accession = 1:194,Height = phe.sat1.1106.soil$height.mean)
 
@@ -81,10 +81,10 @@ phe.extr <- function(phe.raw){
 ### Sativa 1106. We correct for soil height by substracting the mean soil height of the plot from each pixel.
 ### In this way, we do not correct for differences in soil within individual plots. 
 
-load(file = "R_objects_plots/obj_all.pl_sat_rep1_0611_rgb_dsm_msp.out")
+load(file = "R_objects_plots/obj_drone_ima.rep1_sat_1106_rgb_dsm_msp.R4.3.2.out ")
 all.pl.rep1 <- all.pl
 rm(all.pl)
-load(file = "R_objects_plots/obj_all.pl_sat_rep2_0611_rgb_dsm_msp.out")
+load(file = "R_objects_plots/obj_drone_ima.rep2_sat_1106_rgb_dsm_msp.R4.3.2.out ")
 all.pl.rep2 <- all.pl
 rm(all.pl)
 
@@ -125,15 +125,15 @@ ano.height$`Sum Sq`[1]/sum(ano.height$`Sum Sq`)
 
 height_frame <- data.frame(Accession = 1:194,Height = phe.height.cor.rep1$height[,1])
 
-load(file = "Phenotypes_per_plot/obj_phe.sat1.1106.out")
-load(file = "Phenotypes_per_plot/obj_phe.sat2.1106.out")
+load(file = "obj_pheno.sat_rep1.1106.R4.3.2.out")
+load(file = "obj_pheno.sat_rep2.1106.R4.3.2.out")
 
 # Calculate heritability non-corrected height.
 ano.height.nocor <-  anova(lm(c(phe.sat1.1106$height.trimmed_mean_10,phe.sat2.1106$height.trimmed_mean_10)~c(phe.sat1.1106$accession,phe.sat2.1106$accession)))
 ano.height.nocor$`Sum Sq`[1]/sum(ano.height.nocor$`Sum Sq`)
 
-load(file = "phenotypes_soil/obj_phe.sat1.1106.soil.out")
-load(file = "phenotypes_soil/obj_phe.sat2.1106.soil.out")
+load(file = "phenotypes_soil/obj_pheno.sat_rep1.1106.soil.R4.3.2.out")
+load(file = "phenotypes_soil/obj_pheno.sat_rep2.1106.soil.R4.3.2.out")
 
 # Calculate heritabilty soil height.
 ano.height.soil <-  anova(lm(c(phe.sat1.1106.soil$height.trimmed_mean_10,phe.sat2.1106.soil$height.trimmed_mean_10)~c(phe.sat1.1106.soil$accession,phe.sat2.1106.soil$accession)))
@@ -147,18 +147,18 @@ phe.sat2.1106[,121:137] <- NULL
 phe.sat2.1106 <- data.frame(phe.sat2.1106,as.matrix(phe.height.cor.rep2[-1]))
 
 # Save new phenotypes
-save(phe.sat1.1106,file = "corrected_phenotypes/obj.phe.cor.sat1.1106.out")
-save(phe.sat2.1106,file = "corrected_phenotypes/obj.phe.cor.sat2.1106.out")
+save(phe.sat1.1106,file = "corrected_phenotypes/obj.phe.cor.sat_rep1.1106.R4.3.2.out")
+save(phe.sat2.1106,file = "corrected_phenotypes/obj.phe.cor.sat_rep2.1106.R4.3.2.out")
 
 #write.xlsx(phe.sat1.1106,file="corrected_phenotypes/phe_sat1_1106.xlsx",rownames=T)
 #write.xlsx(phe.sat2.1106,file="corrected_phenotypes/phe_sat2_1106.xlsx",rownames=T)
 
 ### Sativa 2506
 
-load(file = "R_objects_plots/obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out")
+load(file = "R_objects_plots/obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out ")
 all.pl.rep1 <- all.pl
 rm(all.pl)
-load(file = "R_objects_plots/obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out")
+load(file = "R_objects_plots/obj_drone_ima.rep2_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out")
 all.pl.rep2 <- all.pl
 rm(all.pl)
 
@@ -200,15 +200,15 @@ ano.height <- anova(lm(c(phe.height.cor.rep1$height[,3],phe.height.cor.rep2$heig
 
 ano.height$`Sum Sq`[1]/sum(ano.height$`Sum Sq`)
 
-load(file = "Phenotypes_per_plot/obj_phe.sat1.2506.out")
-load(file = "Phenotypes_per_plot/obj_phe.sat2.2506.out")
+load(file = "Phenotypes_per_plot/obj_pheno.sat_rep1.2506.R4.3.2.out")
+load(file = "Phenotypes_per_plot/obj_pheno.sat_rep2.2506.R4.3.2.out")
 
 # Calculate heritability non-corrected height.
 ano.height.nocor <-  anova(lm(c(phe.sat1.2506$height.trimmed_mean_10,phe.sat2.2506$height.trimmed_mean_10)~c(phe.sat1.2506$accession,phe.sat2.2506$accession)))
 ano.height.nocor$`Sum Sq`[1]/sum(ano.height.nocor$`Sum Sq`)
 
-load(file = "phenotypes_soil/obj_phe.sat1.2506.soil.out")
-load(file = "phenotypes_soil/obj_phe.sat2.2506.soil.out")
+load(file = "phenotypes_soil/obj_pheno.sat_rep1.2506.soil.R4.3.2.out")
+load(file = "phenotypes_soil/obj_pheno.sat_rep2.2506.soil.R4.3.2.out")
 
 # Calculate heritabilty soil height.
 ano.height.soil <-  anova(lm(c(phe.sat1.2506.soil$height.trimmed_mean_10,phe.sat2.2506.soil$height.trimmed_mean_10)~c(phe.sat1.2506.soil$accession,phe.sat2.2506.soil$accession)))
@@ -222,8 +222,8 @@ phe.sat2.2506[,138:154] <- NULL
 phe.sat2.2506 <- data.frame(phe.sat2.2506,as.matrix(phe.height.cor.rep2[-1]))
 
 # Save new phenotypes
-save(phe.sat1.2506,file = "corrected_phenotypes/obj.phe.cor.sat1.2506.out")
-save(phe.sat2.2506,file = "corrected_phenotypes/obj.phe.cor.sat2.2506.out")
+save(phe.sat1.2506,file = "corrected_phenotypes/obj.phe.cor.sat_rep1.2506.R4.3.2.out")
+save(phe.sat2.2506,file = "corrected_phenotypes/obj.phe.cor.sat_rep2.2506.R4.3.2.out")
 
 #write.xlsx(phe.sat1.2506,file="corrected_phenotypes/phe_sat1_2506.xlsx",rownames=T)
 #write.xlsx(phe.sat2.2506,file="corrected_phenotypes/phe_sat2_2506.xlsx",rownames=T)
