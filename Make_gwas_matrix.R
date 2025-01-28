@@ -3,17 +3,17 @@ if (!dir.exists("GWAS_objects")){
   dir.create("GWAS_objects")
 }
 
-load(file = "corrected_phenotypes/obj.phe.cor.sat1.1106.out")
-load(file = "corrected_phenotypes/obj.phe.cor.sat2.1106.out")
+load(file = "corrected_phenotypes/obj.phe.cor.sat_rep1.1106.R4.3.2.out")
+load(file = "corrected_phenotypes/obj.phe.cor.sat_rep2.1106.R4.3.2.out")
 
-load(file = "corrected_phenotypes/obj.phe.cor.sat1.2506.out")
-load(file = "corrected_phenotypes/obj.phe.cor.sat2.2506.out")
+load(file = "corrected_phenotypes/obj.phe.cor.sat_rep1.2506.R4.3.2.out")
+load(file = "corrected_phenotypes/obj.phe.cor.sat_rep2.2506.R4.3.2.out")
 
-load(file = "Differences_all/sat1.diff.phe.out")
-load(file = "Differences_all/sat2.diff.phe.out")
+load(file = "Differences_all/obj_sat_rep1.diff.phe.R4.3.2.out")
+load(file = "Differences_all/obj_sat_rep2.diff.phe.R4.3.2.out")
 
-load(file = "Differences_all/sat1.dira.phe.out")
-load(file = "Differences_all/sat2.dira.phe.out")
+load(file = "Differences_all/obj_sat_rep1.dira.phe.R4.3.2.out")
+load(file = "Differences_all/obj_sat_rep2.dira.phe.R4.3.2.out")
 
 #### Make Sativa matrix
 mean.sat.1106 <- matrix(nrow = nrow(phe.sat1.1106),ncol = ncol(phe.sat1.1106)-1)
@@ -73,4 +73,4 @@ colnames(dira.sat)<- paste0(colnames(dira.sat1)[2:ncol(dira.sat1)][-rem.sat],".d
 
 sat.full <- cbind(mean.sat.1106,mean.sat.2506,diff.sat,dira.sat)
 
-save(sat.full,file = "GWAS_objects/phe.sat.mean.1106.2506.diff.include.rat.out")
+save(sat.full,file = "GWAS_objects/obj_phe.sat.mean.1106.2506.diff.include.rat.R4.3.2.out")
