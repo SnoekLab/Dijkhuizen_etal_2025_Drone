@@ -406,7 +406,7 @@ GWAS <- function(genotypes, trait, phenotype.name,snp.info, kinship, out.dir) {
   dev.off()
 }
 
-load("GWAS_objects/phe.sat.mean.1106.2506.diff.include.rat.out")
+load("GWAS_objects/obj_phe.sat.mean.1106.2506.diff.include.rat.R4.3.2.out")
 #Instead of loading this file here we manually code what accession numbers we use.
 #load("GWAS_objects/sat.accessions.out")
 accessions <- c("LK001", "LK002", "LK003", "LK004", "LK005", "LK006", "LK007", "LK008",
@@ -436,7 +436,7 @@ accessions <- c("LK001", "LK002", "LK003", "LK004", "LK005", "LK006", "LK007", "
                 "LK199", "LK200")
 
 # Generate the kinship matrix by taking the covariance of the SNPs
-usemat <- load("GWAS_objects/obj_all.ALTREF.out")
+usemat <- load("GWAS_objects/obj_all.ALTREF_SNP_matrix_sat_2024_R4.3.2.out")
 usemat <- eval(parse(text=usemat))
 usemat <- usemat[,-c(1:10)]
 usemat <- as.matrix(t(usemat))
@@ -449,13 +449,13 @@ kinship <- cov(usemat)
 rownames(kinship) <- accessions
 colnames(kinship) <- accessions
 
-save(kinship,file = "GWAS_objects/cov_new_snps.out")
+save(kinship,file = "GWAS_objects/obj_KinshipMatrix.R4.3.2.out ")
 
 #If you ran this script previously you can use this line to spare time
-#load("GWAS_objects/cov_new_snps.out") 
+#load("GWAS_objects/obj_KinshipMatrix.R4.3.2.out ") 
 letkin <- kinship
 
-usemat <- load("GWAS_objects/obj_all.ALTREF.out")
+usemat <- load("GWAS_objects/obj_all.ALTREF_SNP_matrix_sat_2024_R4.3.2.out")
 usemat <- eval(parse(text=usemat))
 snp.info <- usemat[,c(1,7)]
 usemat <- usemat[,-c(1:10)]
