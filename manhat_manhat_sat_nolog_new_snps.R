@@ -5,7 +5,7 @@ library(stringr)
 library(withr)
 library(viridis)
 
-load("GWAS_objects/obj_all.ALTREF.out")
+load("GWAS_objects/obj_all.ALTREF_SNP_matrix_sat_2024_R4.3.2.out")
 #Instead of loading this file here we manually code what accession numbers we use.
 #load("GWAS_objects/sat.accessions.out")
 accessions <- c("LK001", "LK002", "LK003", "LK004", "LK005", "LK006", "LK007", "LK008",
@@ -101,6 +101,6 @@ chr <- snp.info[max.snps,1]
 
 plot.frame <- data.frame(Phenotype = pheno,Chromosome = chr,Position = pos/10^7,Pval=pvalues)
 
-save(plot.frame,file = "Clustering/cluster_new_snps/manhat.manhat.nolog.sat.new.snps.out")
+save(plot.frame,file = "Clustering/cluster_new_snps/obj_manhat_sat.R4.3.2.out")
 #write.csv(plot.frame,file = "Clustering/cluster_new_snps/peaks_sativa_nolog_new_snps.csv")
 
