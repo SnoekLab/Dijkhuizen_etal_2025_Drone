@@ -14,7 +14,7 @@ if (!dir.exists("phenotypes_soil")){
 ###############
 #Day 1106 REP 1
 ###############
-load(file = "R_objects_plots/obj_all.pl_sat_rep1_0611_rgb_dsm_msp.out")
+load(file = "R_objects_plots/obj_drone_ima.rep1_sat_1106_rgb_dsm_msp.R4.3.2.out ")
 
 # Here we obtain a logical with TRUE if EVI > 0.25 (plant pixels) and FALSE otherwise.
 evi.selc <- 2.5*((all.pl$msp5-all.pl$msp3)/(all.pl$msp5+6*all.pl$msp3+7.5*all.pl$msp1+1))>0.25
@@ -111,12 +111,12 @@ colnames(phe.sat1.1106.soil)[1] <- "accession"
 colnames(phe.sat1.1106.soil)[length(colnames(phe.sat1.1106.soil))-1]<-c("soil.px")
 colnames(phe.sat1.1106.soil)[length(colnames(phe.sat1.1106.soil))]<-c("tot.px")
 
-save(phe.sat1.1106.soil,file="phenotypes_soil/obj_phe.sat1.1106.soil.out")
+save(phe.sat1.1106.soil,file="phenotypes_soil/obj_pheno.sat_rep1.1106.soil.R4.3.2.out")
 
 ###############
 #Day 1106 REP 2
 ###############
-load(file = "R_objects_plots/obj_all.pl_sat_rep2_0611_rgb_dsm_msp.out")
+load(file = "R_objects_plots/obj_drone_ima.rep2_sat_1106_rgb_dsm_msp.R4.3.2.out ")
 
 # Here we obtain a logical with TRUE if EVI > 0.25 (plant pixels) and FALSE otherwise.
 evi.selc <- 2.5*((all.pl$msp5-all.pl$msp3)/(all.pl$msp5+6*all.pl$msp3+7.5*all.pl$msp1+1))>0.25
@@ -210,12 +210,12 @@ colnames(phe.sat2.1106.soil)[1] <- "accession"
 colnames(phe.sat2.1106.soil)[length(colnames(phe.sat2.1106.soil))-1]<-c("soil.px")
 colnames(phe.sat2.1106.soil)[length(colnames(phe.sat2.1106.soil))]<-c("tot.px")
 
-save(phe.sat2.1106.soil,file="phenotypes_soil/obj_phe.sat2.1106.soil.out")
+save(phe.sat2.1106.soil,file="phenotypes_soil/obj_pheno.sat_rep2.1106.soil.R4.3.2.out")
 
 ###############
 #Day 2506 REP 1
 ###############
-load(file="R_objects_plots/obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out")
+load(file="R_objects_plots/obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out ")
 
 # Here we obtain a logical with TRUE if EVI > 0.25 (plant pixels) and FALSE otherwise.
 evi.selc <- 2.5*((all.pl$msp5-all.pl$msp3)/(all.pl$msp5+6*all.pl$msp3+7.5*all.pl$msp1+1))>0.25
@@ -321,12 +321,12 @@ colnames(phe.sat1.2506.soil)[1] <- "accession"
 colnames(phe.sat1.2506.soil)[length(colnames(phe.sat1.2506.soil))-1]<-c("soil.px")
 colnames(phe.sat1.2506.soil)[length(colnames(phe.sat1.2506.soil))]<-c("tot.px")
 
-save(phe.sat1.2506.soil,file="phenotypes_soil/obj_phe.sat1.2506.soil.out")
+save(phe.sat1.2506.soil,file="phenotypes_soil/obj_pheno.sat_rep1.2506.soil.R4.3.2.out")
 
 ###############
 #Day 2506 REP 2
 ###############
-load(file="R_objects_plots/obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out")
+load(file="R_objects_plots/obj_drone_ima.rep2_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out")
 
 # Here we obtain a logical with TRUE if EVI > 0.25 (plant pixels) and FALSE otherwise.
 evi.selc <- 2.5*((all.pl$msp5-all.pl$msp3)/(all.pl$msp5+6*all.pl$msp3+7.5*all.pl$msp1+1))>0.25
@@ -430,4 +430,4 @@ colnames(phe.sat2.2506.soil)[1] <- "accession"
 colnames(phe.sat2.2506.soil)[length(colnames(phe.sat2.2506.soil))-1]<-c("soil.px")
 colnames(phe.sat2.2506.soil)[length(colnames(phe.sat2.2506.soil))]<-c("tot.px")
 
-save(phe.sat2.2506.soil,file="phenotypes_soil/obj_phe.sat2.2506.soil.out")
+save(phe.sat2.2506.soil,file="phenotypes_soil/obj_pheno.sat_rep2.2506.soil.R4.3.2.out")
