@@ -12,13 +12,13 @@ Under Scripts to generate the figures we give the scripts to genereate the figur
 ## Scripts to process the data
 ### *Extr_phe_per_plot_annotated.R*
 Takes dataframe from previous script and extracts the phenotypes, color, color ratios and height.<br>
-Inputs: "obj_all.pl_pheno_sat_rep1_1106_rgb_dsm_msp_red_nd_R4.3.2.out", "obj_all.pl_pheno_sat_rep2_1106_rgb_dsm_msp_red_nd_R4.3.2.out",<br> "obj_all.pl_pheno_sat_rep1_2506_rgb_dsm_msp_red_nd_R4.3.2.out", "obj_all.pl_pheno_sat_rep2_2506_rgb_dsm_msp_red_nd_R4.3.2.out" <br>
+Inputs: "obj_drone_ima.rep1_sat_1106_rgb_dsm_msp.R4.3.2.out ", "obj_drone_ima.rep2_sat_1106_rgb_dsm_msp.R4.3.2.out ",<br> "obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out ", "obj_drone_ima.rep2_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out" <br>
 Dataframes containing for every pixel the RGB values, the MSP values, the height, and what accession they belong to. <br>
 Outputs: "obj_pheno.sat_rep1.1106.R4.3.2.out", "obj_pheno.sat_rep2.1106.R4.3.2.out", "obj_pheno.sat_rep1.2506.R4.3.2.out", "obj_pheno.sat_rep2.2506.R4.3.2.out", dataframes containing the phenotypes of all accessions.
 
 ### *Extr_soil_pixels.R*
 Outputs the soil pixels seperated from the plant pixels. This is necessary for the height correction in next step. <br>
-Inputs: "obj_all.pl_pheno_sat_rep1_1106_rgb_dsm_msp_red_nd_R4.3.2.out", "obj_all.pl_pheno_sat_rep2_1106_rgb_dsm_msp_red_nd_R4.3.2.out",<br> "obj_all.pl_pheno_sat_rep1_2506_rgb_dsm_msp_red_nd_R4.3.2.out", "obj_all.pl_pheno_sat_rep2_2506_rgb_dsm_msp_red_nd_R4.3.2.out" <br>
+Inputs: "obj_drone_ima.rep1_sat_1106_rgb_dsm_msp.R4.3.2.out ", "obj_drone_ima.rep2_sat_1106_rgb_dsm_msp.R4.3.2.out ",<br> "obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out ", "obj_drone_ima.rep2_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out" <br>
 Outputs: "obj_pheno.sat_rep1.1106.soil.R4.3.2.out", "obj_pheno.sat_rep2.1106.soil.R4.3.2.out", "obj_pheno.sat_rep1.2506.soil.R4.3.2.out", "obj_pheno.sat_rep2.2506.soil.R4.3.2.out", dataframes containing the soil pixel. <br>
 
 ### *Correct_heights.R*
