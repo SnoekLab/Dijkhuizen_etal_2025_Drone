@@ -101,6 +101,6 @@ chr <- snp.info[max.snps,1]
 
 plot.frame <- data.frame(Phenotype = pheno,Chromosome = chr,Position = pos/10^7,Pval=pvalues)
 
-save(plot.frame,file = "Clustering/cluster_new_snps/obj_manhat_sat.R4.3.2.out")
+save(plot.frame,file = "GWAS_objects/obj_manhat_sat.R4.3.2.out")
 #write.csv(plot.frame,file = "Clustering/cluster_new_snps/peaks_sativa_nolog_new_snps.csv")
 
