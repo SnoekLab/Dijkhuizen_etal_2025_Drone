@@ -14,19 +14,17 @@
 #
 
 ### This script works with the following files (R data objects)
-
-obj_all.pl_sat_rep1_0611_rgb_dsm_msp.out
-obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out
-obj_all.pl_sat_rep2_0611_rgb_dsm_msp.out
-obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out
-
+obj_drone_ima.rep1_sat_1106_rgb_dsm_msp.R4.3.2.out
+obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out
+obj_drone_ima.rep2_sat_1106_rgb_dsm_msp.R4.3.2.out
+obj_drone_ima.rep2_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out
 
 ## library to make a plot ##
 library(ggplot2)
 
 ### Example to load the data and make a plot ...................................
 
-load("obj_all.pl_sat_rep1_0611_rgb_dsm_msp.out") # load data
+load("R_objects_plots/obj_drone_ima.rep1_sat_1106_rgb_dsm_msp.R4.3.2.out") # load data
 
 # show data
 head(all.pl)
