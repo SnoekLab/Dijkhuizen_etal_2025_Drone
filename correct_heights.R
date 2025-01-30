@@ -125,8 +125,8 @@ ano.height$`Sum Sq`[1]/sum(ano.height$`Sum Sq`)
 
 height_frame <- data.frame(Accession = 1:194,Height = phe.height.cor.rep1$height[,1])
 
-load(file = "obj_pheno.sat_rep1.1106.R4.3.2.out")
-load(file = "obj_pheno.sat_rep2.1106.R4.3.2.out")
+load(file = "Phenotypes_per_plot/obj_pheno.sat_rep1.1106.R4.3.2.out")
+load(file = "Phenotypes_per_plot/obj_pheno.sat_rep2.1106.R4.3.2.out")
 
 # Calculate heritability non-corrected height.
 ano.height.nocor <-  anova(lm(c(phe.sat1.1106$height.trimmed_mean_10,phe.sat2.1106$height.trimmed_mean_10)~c(phe.sat1.1106$accession,phe.sat2.1106$accession)))
