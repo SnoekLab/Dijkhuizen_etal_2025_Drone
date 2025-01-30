@@ -51,7 +51,7 @@ max.snps <- c()
 pheno <- c()
 
 pvalues <- c()
-
+# Replace the filepath here with where you stored the output of cor_gwas_massive_sativa_all_snps.R
 for(i in list.files("/hosts/linuxhome/mutant14/tmp/Bramve/GWAS_sat/frames",full.names = T)){
   load(i)
   phe <- str_extract(i,"(?<=/frames/)(.*)(?=[.])")
