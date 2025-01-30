@@ -1,9 +1,7 @@
-
-
-load("./DroneData2023/obj.phe.cor.sat1.1106.out")
-load("./DroneData2023/obj.phe.cor.sat2.1106.out")
-load("./DroneData2023/obj.phe.cor.sat1.2506.out")
-load("./DroneData2023/obj.phe.cor.sat2.2506.out")
+load("corrected_phenotypes/obj.phe.cor.sat_rep1.1106.R4.3.2.out")
+load("corrected_phenotypes/obj.phe.cor.sat_rep2.1106.R4.3.2.out")
+load("corrected_phenotypes/obj.phe.cor.sat_rep1.2506.R4.3.2.out")
+load("corrected_phenotypes/obj.phe.cor.sat_rep2.2506.R4.3.2.out")
 
 
 phe.sat1.1106[,2]
