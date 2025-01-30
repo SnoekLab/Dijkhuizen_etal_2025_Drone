@@ -21,7 +21,7 @@ if (!dir.exists("Phenotypes_per_plot")){
 # Day 1106, REP 1
 ###############################################################################
 
-load(file = "R_objects_plots/obj_all.pl_sat_rep1_0611_rgb_dsm_msp.out")
+load(file = "R_objects_plots/obj_drone_ima.rep1_sat_1106_rgb_dsm_msp.R4.3.2.out ")
 
 # We threshold on th enhanced vegetation index to seperate plant from soil pixels.
 evi <- 2.5*((all.pl$msp5-all.pl$msp3)/(all.pl$msp5+6*all.pl$msp3+7.5*all.pl$msp1+1))
@@ -151,14 +151,14 @@ dev.off()
 
 
 phe.sat1.1106 <- phe.sat1.1106.plant
-save(phe.sat1.1106,file="Phenotypes_per_plot/obj_phe.sat1.1106.out")
+save(phe.sat1.1106,file="Phenotypes_per_plot/obj_pheno.sat_rep1.1106.R4.3.2.out")
 #write.xlsx(phe.sat1.1106.plant,file="Phenotypes_per_plot/phe_sat_rep1_1106.xlsx",rownames=T)
 
 ###############################################################################
 # Day 1106, REP 2
 ###############################################################################
 
-load(file = "R_objects_plots/obj_all.pl_sat_rep2_0611_rgb_dsm_msp.out") # Run this for rep 2
+load(file = "R_objects_plots/obj_drone_ima.rep2_sat_1106_rgb_dsm_msp.R4.3.2.out ") # Run this for rep 2
 
 # We threshold on th enhanced vegetation index to seperate plant from soil pixels.
 evi <- 2.5*((all.pl$msp5-all.pl$msp3)/(all.pl$msp5+6*all.pl$msp3+7.5*all.pl$msp1+1))
@@ -281,14 +281,14 @@ colnames(phe.sat2.1106.plant)[length(colnames(phe.sat2.1106.plant))]<-c("tot.px"
 
 phe.sat2.1106 <- phe.sat2.1106.plant
 
-save(phe.sat2.1106,file="Phenotypes_per_plot/obj_phe.sat2.1106.out")
+save(phe.sat2.1106,file="Phenotypes_per_plot/obj_pheno.sat_rep2.1106.R4.3.2.out")
 #write.xlsx(phe.sat2.1106.plant,file="Phenotypes_per_plot/phe_sat_rep2_1106.xlsx",rownames=T)
 
 ###############################################################################
 # Day 2506, REP 1
 ###############################################################################
 
-load(file="R_objects_plots/obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out") #Run this for rep1
+load(file="R_objects_plots/obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out ") #Run this for rep1
 
 # Here we obtain a logical with TRUE if EVI > 0.4 (plant pixels) and FALSE otherwise.
 evi.selc <- 2.5*((all.pl$msp5-all.pl$msp3)/(all.pl$msp5+6*all.pl$msp3+7.5*all.pl$msp1+1))>0.4
@@ -405,14 +405,14 @@ dev.off()
 
 phe.sat1.2506 <- phe.sat1.2506.plant
 
-save(phe.sat1.2506,file="Phenotypes_per_plot/obj_phe.sat1.2506.out")
+save(phe.sat1.2506,file="Phenotypes_per_plot/obj_pheno.sat_rep1.2506.R4.3.2.out")
 # write.xlsx(phe.sat1.2506.plant,file="Phenotypes_per_plot/phe_sat_rep1_2506.xlsx",rownames=T)
 
 ###############################################################################
 # Day 2506, REP 2
 ###############################################################################
 
-load(file="R_objects_plots/obj_all.pl_sat_rep2_2506_rgb_dsm_msp_red_nd.out") #Run this for rep2
+load(file="R_objects_plots/obj_drone_ima.rep2_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out") #Run this for rep2
 
 # Here we obtain a logical with TRUE if EVI > 0.4 (plant pixels) and FALSE otherwise.
 evi.selc <- 2.5*((all.pl$msp5-all.pl$msp3)/(all.pl$msp5+6*all.pl$msp3+7.5*all.pl$msp1+1))>0.4
@@ -523,5 +523,5 @@ colnames(phe.sat2.2506.plant)[length(colnames(phe.sat2.2506.plant))]<-c("tot.px"
 
 phe.sat2.2506 <- phe.sat2.2506.plant
 
-save(phe.sat2.2506,file="Phenotypes_per_plot/obj_phe.sat2.2506.out")
+save(phe.sat2.2506,file="Phenotypes_per_plot/obj_pheno.sat_rep2.2506.R4.3.2.out")
 # write.xlsx(phe.sat2.2506.plant,file="Phenotypes_per_plot/phe_sat_rep2_2506.xlsx",rownames=T)
