@@ -12,7 +12,7 @@ Under Scripts to generate the figures we give the scripts to genereate the figur
 ## Scripts to process the data
 ### *Extr_phe_per_plot_annotated.R*
 Takes dataframe from previous script and extracts the phenotypes, color, color ratios and height.<br>
-Inputs: "obj_drone_ima.rep1_sat_1106_rgb_dsm_msp.R4.3.2.out ", "obj_drone_ima.rep2_sat_1106_rgb_dsm_msp.R4.3.2.out ",<br> "obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out ", "obj_drone_ima.rep2_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out" <br>
+Inputs: "obj_drone_ima.rep1_sat_1106_rgb_dsm_msp.R4.3.2.out", "obj_drone_ima.rep2_sat_1106_rgb_dsm_msp.R4.3.2.out",<br> "obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out", "obj_drone_ima.rep2_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out" <br>
 Dataframes containing for every pixel the RGB values, the MSP values, the height, and what accession they belong to. <br>
 Outputs: "obj_pheno.sat_rep1.1106.R4.3.2.out", "obj_pheno.sat_rep2.1106.R4.3.2.out", "obj_pheno.sat_rep1.2506.R4.3.2.out", "obj_pheno.sat_rep2.2506.R4.3.2.out", dataframes containing the phenotypes of all accessions.
 
@@ -52,7 +52,7 @@ Outputs: "manhat.manhat.nolog.saw.new.snps.out" all frames aggregated into one l
 
 ## Scripts to generate the figures
 ***Fig1.R*** &emsp; Script to generate figure 1<br>
-inputs: "obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out" file containing the image data for sativa on day 93.<br>
+inputs: "obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out" file containing the image data for sativa on day 93.<br>
 ***Fig2.R*** &emsp; Script to generate figure 2<br>
 inputs: "Supplemental_data.xlsx" <br>
 ***Fig3.R*** &emsp; Script to generate figure 3, also generates the clustering on mean traits<br>
