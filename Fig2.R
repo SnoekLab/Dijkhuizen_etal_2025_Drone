@@ -22,7 +22,7 @@ height.mean.2506 <- sat.full$height.mean.2506
 height.mean.dira <- sat.full$height.mean.dira
 
 Pheno.value <- c(height.mean.1106,height.mean.2506,height.mean.dira)
-Day <- rep(c(rep("Day 78",nrow(LK.info)),rep("Day 93",nrow(LK.info)),rep("Ratio",nrow(LK.info))))
+Day <- rep(c(rep("Day 78",nrow(LK.info)),rep("Day 93",nrow(LK.info)),rep("day-ratio",nrow(LK.info))))
 LKid <- rep(LK.info$LKID,3)
 Type <- rep(LK.info$Morphology.type,3)
 ## figure 
@@ -32,9 +32,9 @@ as.factor(to.pl$Type)
 
 highlightlk <- c("LK061","LK147","LK087","LK183","LK108","LK108","LK198","LK194") # highlight genotypes shown in figure 1
 highlightlk
-to.pl.hl <- to.pl[to.pl$LKid %in% highlightlk & to.pl$Day != "Ratio",]
+to.pl.hl <- to.pl[to.pl$LKid %in% highlightlk & to.pl$Day != "day-ratio",]
 
-fig.height.mean <- ggplot(to.pl[to.pl$Day != "Ratio",])+
+fig.height.mean <- ggplot(to.pl[to.pl$Day != "day-ratio",])+
   geom_boxplot(aes(Type,Pheno.value,col=Day,fill=Type))+
   scale_y_continuous(limits = c(0,0.7))+
   scale_color_manual(values = c("black","grey60"),guide = guide_legend(direction = "horizontal"))+
@@ -54,17 +54,17 @@ fig.height.mean <- ggplot(to.pl[to.pl$Day != "Ratio",])+
         panel.grid.major = element_line(color = "grey2",linewidth =  0.1,linetype = 3),
         legend.position = c(0,0.95),
         legend.title = element_blank())
-  
+
 
 fig.height.mean
 
-to.pl.hl <- to.pl[to.pl$LKid %in% highlightlk & to.pl$Day == "Ratio",]
-fig.height.mean.rat <- ggplot(to.pl[to.pl$Day == "Ratio",])+
+to.pl.hl <- to.pl[to.pl$LKid %in% highlightlk & to.pl$Day == "day-ratio",]
+fig.height.mean.rat <- ggplot(to.pl[to.pl$Day == "day-ratio",])+
   geom_boxplot(aes(Type,Pheno.value,col=Day,fill=Type))+
   scale_y_continuous()+
   scale_color_manual(values = c("black","grey60"),guide = "none")+
   scale_fill_manual(values = turbo(8)[2:8],guide = "none")+
-  ylab("Log2 Mean Height ratio")+
+  ylab("Mean Height day-ratio")+
   theme_cowplot()+
   theme(panel.background = element_rect(linewidth = 0.2,color="black"),
         axis.line = element_blank(),
@@ -91,15 +91,15 @@ msp4.mean.dira <- sat.full$msp4.mean.dira
 
 
 Pheno.value <- c(msp4.mean.1106,msp4.mean.2506,msp4.mean.dira)
-Day <- rep(c(rep("Day 78",nrow(LK.info)),rep("Day 93",nrow(LK.info)),rep("Ratio",nrow(LK.info))))
+Day <- rep(c(rep("Day 78",nrow(LK.info)),rep("Day 93",nrow(LK.info)),rep("day-ratio",nrow(LK.info))))
 LKid <- rep(LK.info$LKID,3)
 Type <- rep(LK.info$Morphology.type,3)
 ## figure 
 
 to.pl <- data.frame(LKid,Type,Day,Pheno.value)
-to.pl.hl <- to.pl[to.pl$LKid %in% highlightlk & to.pl$Day != "Ratio",]
+to.pl.hl <- to.pl[to.pl$LKid %in% highlightlk & to.pl$Day != "day-ratio",]
 
-fig.msp4.mean <- ggplot(to.pl[to.pl$Day != "Ratio",])+
+fig.msp4.mean <- ggplot(to.pl[to.pl$Day != "day-ratio",])+
   geom_boxplot(aes(Type,Pheno.value,col=Day,fill=Type))+
   scale_y_continuous(limits = c(0.1,0.45))+
   scale_color_manual(values = c("black","grey60"),guide = guide_legend(direction = "horizontal"))+
@@ -123,14 +123,14 @@ fig.msp4.mean <- ggplot(to.pl[to.pl$Day != "Ratio",])+
 
 fig.msp4.mean
 
-to.pl.hl <- to.pl[to.pl$LKid %in% highlightlk & to.pl$Day == "Ratio",]
+to.pl.hl <- to.pl[to.pl$LKid %in% highlightlk & to.pl$Day == "day-ratio",]
 
-fig.msp4.mean.rat <- ggplot(to.pl[to.pl$Day == "Ratio",])+
+fig.msp4.mean.rat <- ggplot(to.pl[to.pl$Day == "day-ratio",])+
   geom_boxplot(aes(Type,Pheno.value,col=Day,fill=Type))+
   scale_y_continuous()+
   scale_color_manual(values = c("black","grey60"),guide = "none")+
   scale_fill_manual(values = turbo(8)[2:8],guide = "none")+
-  ylab("Log2 Mean Red Edge ratio")+
+  ylab("Mean Red Edge day-ratio")+
   theme_cowplot()+
   theme(panel.background = element_rect(linewidth = 0.2,color="black"),
         axis.line = element_blank(),
@@ -160,20 +160,20 @@ gbrat.mean.dira <- sat.full$gbrat.mean.dira
 
 
 Pheno.value <- c(gbrat.mean.1106,gbrat.mean.2506,gbrat.mean.dira)
-Day <- rep(c(rep("Day 78",nrow(LK.info)),rep("Day 93",nrow(LK.info)),rep("Ratio",nrow(LK.info))))
+Day <- rep(c(rep("Day 78",nrow(LK.info)),rep("Day 93",nrow(LK.info)),rep("day-ratio",nrow(LK.info))))
 LKid <- rep(LK.info$LKID,3)
 Type <- rep(LK.info$Morphology.type,3)
 ## figure 
 
 to.pl <- data.frame(LKid,Type,Day,Pheno.value)
-to.pl.hl <- to.pl[to.pl$LKid %in% highlightlk & to.pl$Day != "Ratio",]
+to.pl.hl <- to.pl[to.pl$LKid %in% highlightlk & to.pl$Day != "day-ratio",]
 
-fig.gbrat.mean <- ggplot(to.pl[to.pl$Day != "Ratio",])+
+fig.gbrat.mean <- ggplot(to.pl[to.pl$Day != "day-ratio",])+
   geom_boxplot(aes(Type,Pheno.value,col=Day,fill=Type))+
   scale_y_continuous(limits = c(-0.8,2))+
   scale_color_manual(values = c("black","grey60"),guide = guide_legend(direction = "horizontal"))+
   scale_fill_manual(values = turbo(8)[2:8],guide = "none")+
-  ylab("Mean Log2 Green/Blue ratio")+
+  ylab("Mean Green/Blue")+
   theme_cowplot()+
   theme(panel.background = element_rect(linewidth = 0.2,color="black"),
         axis.line = element_blank(),
@@ -192,14 +192,14 @@ fig.gbrat.mean <- ggplot(to.pl[to.pl$Day != "Ratio",])+
 
 fig.gbrat.mean
 
-to.pl.hl <- to.pl[to.pl$LKid %in% highlightlk & to.pl$Day == "Ratio",]
+to.pl.hl <- to.pl[to.pl$LKid %in% highlightlk & to.pl$Day == "day-ratio",]
 
-fig.gbrat.mean.rat <- ggplot(to.pl[to.pl$Day == "Ratio",])+
+fig.gbrat.mean.rat <- ggplot(to.pl[to.pl$Day == "day-ratio",])+
   geom_boxplot(aes(Type,Pheno.value,col=Day,fill=Type))+
   scale_y_continuous()+
   scale_color_manual(values = c("black","grey60"),guide = "none")+
   scale_fill_manual(values = turbo(8)[2:8],guide = "none")+
-  ylab("Log2 Mean Green/Blue ratio ratio")+
+  ylab("Mean Green/Blue day-ratio")+
   theme_cowplot()+
   theme(panel.background = element_rect(linewidth = 0.2,color="black"),
         axis.line = element_blank(),
