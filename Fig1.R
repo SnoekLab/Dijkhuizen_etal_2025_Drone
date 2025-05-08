@@ -7,7 +7,7 @@ library(cowplot)
 # Load in the raw image data of day 1 or 2. Here we only look at rep1.
 # In the paper we used day 2 (2506).
 #load(file="Robjects_allpl/obj_drone_ima.rep1_sat_1106_rgb_dsm_msp.R4.3.2.out")
-load(file="Robjects_allpl/obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out")
+load(file="Robjects_allpl/obj_all.pl_sat_rep1_2506_rgb_dsm_msp_red_nd.out")
 
 #First we define a function to plot a accession by their LKID
 plot.plot <- function(use.lk =  "LK147",use.scale = 0.25,use.title = "my title here"){

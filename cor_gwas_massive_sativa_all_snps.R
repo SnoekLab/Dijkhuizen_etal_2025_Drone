@@ -382,7 +382,7 @@ GWAS <- function(genotypes, trait, phenotype.name,snp.info, kinship, out.dir) {
   plot_frame <- data.frame(pval = -log10(gassoc_gls$tab$pval/100000),chr = gassoc_gls$chr,pos = gassoc_gls$pos,zscore = gassoc_gls$tab$zscore,snp_index = snp_index)
   save(plot_frame,file=paste(out.dir,"/frames/",phenotype,".out",sep=""))
   
-  manh <- ggplot(plot_frame,aes(x = pos, y = -log10(pval),col = as.factor(chr)))+
+  manh <- ggplot(plot_frame,aes(x = pos, y = pval,col = as.factor(chr)))+
     geom_point()+
     facet_grid(~as.factor(chr),space = "free_x",scale = "free_x")+
     xlab("Position Mb / 10")+

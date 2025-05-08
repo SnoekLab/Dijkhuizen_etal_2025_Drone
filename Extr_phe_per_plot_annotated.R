@@ -21,7 +21,7 @@ if (!dir.exists("Phenotypes_per_plot")){
 # Day 1106, REP 1
 ###############################################################################
 
-load(file = "R_objects_plots/obj_drone_ima.rep1_sat_1106_rgb_dsm_msp.R4.3.2.out ")
+load(file = "R_objects_plots/obj_drone_ima.rep1_sat_1106_rgb_dsm_msp.R4.3.2.out")
 
 # We threshold on th enhanced vegetation index to seperate plant from soil pixels.
 evi <- 2.5*((all.pl$msp5-all.pl$msp3)/(all.pl$msp5+6*all.pl$msp3+7.5*all.pl$msp1+1))
@@ -158,7 +158,7 @@ save(phe.sat1.1106,file="Phenotypes_per_plot/obj_pheno.sat_rep1.1106.R4.3.2.out"
 # Day 1106, REP 2
 ###############################################################################
 
-load(file = "R_objects_plots/obj_drone_ima.rep2_sat_1106_rgb_dsm_msp.R4.3.2.out ") # Run this for rep 2
+load(file = "R_objects_plots/obj_drone_ima.rep2_sat_1106_rgb_dsm_msp.R4.3.2.out") # Run this for rep 2
 
 # We threshold on th enhanced vegetation index to seperate plant from soil pixels.
 evi <- 2.5*((all.pl$msp5-all.pl$msp3)/(all.pl$msp5+6*all.pl$msp3+7.5*all.pl$msp1+1))
@@ -288,7 +288,7 @@ save(phe.sat2.1106,file="Phenotypes_per_plot/obj_pheno.sat_rep2.1106.R4.3.2.out"
 # Day 2506, REP 1
 ###############################################################################
 
-load(file="R_objects_plots/obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out ") #Run this for rep1
+load(file="R_objects_plots/obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out") #Run this for rep1
 
 # Here we obtain a logical with TRUE if EVI > 0.4 (plant pixels) and FALSE otherwise.
 evi.selc <- 2.5*((all.pl$msp5-all.pl$msp3)/(all.pl$msp5+6*all.pl$msp3+7.5*all.pl$msp1+1))>0.4

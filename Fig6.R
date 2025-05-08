@@ -5,7 +5,7 @@ library(cowplot)
 
 #Load in the data
 plot.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Supplemental_data.xlsx", "height.traits")
-load(file="Robjects_allpl/obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out") # The images
+load(file="R_objects_plots/obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out") # The images
 
 ## make pseudo points to get the right facet panel size
 pseudo.points <- data.frame(cbind(rep(1:9,2),rep(7,18),c(rep(0,9),214.8,217.1,257.8,377.4,339.6,193.1,195.5,309.6,203.9)))
@@ -26,7 +26,7 @@ fig6c <- ggplot()+
   scale_color_manual(values = c("cyan3","black","red4","#7570B3","magenta","#66A61E","#E6AB02"))+
   scale_alpha_identity() + scale_size_identity()+
   scale_x_continuous(breaks = c(50,100,150,200,250,300,350),expand = c(0,0))+
-  facet_grid(cols = vars(Chromosome), space = "free_x",scale = "free_x") +
+  facet_wrap(~ Chromosome, scales = "free_x", nrow = 2) +
   guides(color=guide_legend(title="",override.aes = list(alpha = 1,size=2),direction = "horizontal"),
          alpha = guide_none(),
          size = guide_none())+
@@ -65,7 +65,7 @@ fig6a.plot
 fig6b.plot <- ggplot() + geom_blank() + theme_bw() + # Create a blank plot to draw on.
   theme(panel.border = element_blank())
 fig6b.plot
-fig6b.plot <- ggdraw(fig6b.plot) + draw_image("boltinglettuce.png")
+fig6b.plot <- ggdraw(fig6b.plot) + draw_image("boltinglettuce2.png")
 
 ################################
 fig6AB <- plot_grid(fig6a.plot, fig6b.plot, ncol =2, labels = c("A", "B"))
@@ -73,7 +73,7 @@ fig6ABC <- plot_grid(fig6AB, fig6c, nrow = 2, rel_heights = c(1.5,2), labels = c
 fig6ABC
 
 #Two ways to save this image.
-ggsave("Script_per_figure/Figures/figure7ABC.png", width = 15, height = 10, units = "cm" )
-png("Script_per_figure/Figures/figure7abcpng.png", width = 860, height = 540)
+ggsave("Script_per_figure/Figures/figure7ABC.png", width = 15, height = 15, units = "cm" )
+png("Script_per_figure/Figures/figure7abcpng.png", width = 860, height = 580)
 fig6ABC
 dev.off()
