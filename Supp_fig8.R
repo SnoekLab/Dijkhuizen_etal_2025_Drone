@@ -50,10 +50,10 @@ fig8 <- ggplot()+
   geom_point(data = plot.frame,aes(Position,Pval,col=types),alpha=0.8,size=2,shape=17)+
   geom_rect(data = rectangles[rectangles$type == "confirmed",],
             aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax), inherit.aes = FALSE,
-            fill = NA, color = "magenta2", size = 0.5, alpha = 0.5)+
+            fill = NA, color = alpha("magenta2", 0.75), size = 0.5)+
   geom_rect(data = rectangles[rectangles$type == "new",],
             aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax), inherit.aes = FALSE,
-            fill = NA, color = "cyan2", size = 0.5)+
+            fill = NA, color = alpha("cyan2", 0.75), size = 0.5)+
   geom_text(data = rectangles, aes(x = label_x, y= label_y, label = label), size = 2)+
   facet_grid(all_clustering~Chromosome,space = "free_x",scale = "free_x",labeller = label_wrap_gen(width =13,multi_line = TRUE))+
   scale_color_manual(values = c("gold2", "black"))+
