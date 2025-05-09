@@ -58,6 +58,7 @@ fig8 <- ggplot()+
   facet_grid(all_clustering~Chromosome,space = "free_x",scale = "free_x",labeller = label_wrap_gen(width =13,multi_line = TRUE))+
   scale_color_manual(values = c("gold2", "black"))+
   scale_x_continuous(breaks = c(50,100,150,200,250,300,350),expand = c(0,0))+
+  scale_y_continuous(limits = c(7, NA))+
   guides(color=guide_legend(title="",override.aes = list(alpha = 1,size=3),direction = "horizontal"))+
   xlab("Position (Mbp)") + ylab(bquote(-log[10] (p)))+
   theme_cowplot()+
