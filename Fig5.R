@@ -45,15 +45,18 @@ fig5 <- ggplot()+
   geom_point(data = pseudo.points,aes(Position,Pval),col=NA)+
   geom_point(data = plot.frame,aes(Position,Pval,col=obs),alpha=0.4,size=2,shape=17)+
   geom_rect(data = rectangles[rectangles$type == "confirmed",],
-            aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax), inherit.aes = FALSE,
-            fill = alpha("grey",0), color = "magenta2", size = 0.5)+
+            aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax), inherit.aes = FALSE,
+            fill = NA,
+            color = alpha("magenta2", 0.8), size = 0.5) +
   geom_rect(data = rectangles[rectangles$type == "new",],
-            aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax), inherit.aes = FALSE,
-            fill = alpha("grey",0), color = "cyan2", size = 0.5)+
+            aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax), inherit.aes = FALSE,
+            fill = NA,
+            color = alpha("cyan2", 0.8), size = 0.5)+
   geom_text(data = rectangles, aes(x = label_x, y= label_y, label = label), size = 2)+
   facet_grid(mean_clustering~Chromosome,space = "free_x",scale = "free_x",labeller = label_wrap_gen(width =13,multi_line = TRUE))+
   scale_color_manual(values = c("blue3","red3","grey30"))+
   scale_x_continuous(breaks = c(50,100,150,200,250,300,350),expand = c(0,0))+
+  scale_y_continuous(expand = c(0, 0))+ # to make the rectangles reach the x-axis
   guides(color=guide_legend(title="",override.aes = list(alpha = 1,size=3),direction = "horizontal"))+
   xlab("Position (Mbp)") + 
   ylab(bquote(-log[10] (p)))+
