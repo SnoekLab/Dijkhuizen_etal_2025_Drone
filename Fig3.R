@@ -36,6 +36,9 @@ ok$Phenotype
 kmeans_clust <- as.factor(km.sat.sqrd$cluster[ok$vertex.names])
 clust.names <- c("A: Color change","B: Color day 93","C: Vegetation indices (VI)","D: Green","E: Red/green",
                  "F: Relative blue","G: VI change","H: Height","I: Relative red","J: MSP change")
+# Or alternatively just stick with A,B C
+clust.names <- c("A","B","C","D","E","F","G","H","I","J")
+
 kmeans_clust <- clust.names[kmeans_clust]
 
 Atday <- rep(NA,nrow(ok))
