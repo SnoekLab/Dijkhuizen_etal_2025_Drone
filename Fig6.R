@@ -21,12 +21,12 @@ plot.frame$size[plot.frame$types == "descriptives"] <- 2.5
 # Make the mean traits black and all extended descriptives a different color.
 fig6c <- ggplot()+
   geom_point(data = pseudo.points,aes(Position,Pval),col=NA)+
-  geom_point(data = plot.frame, aes(Position, Pval, col = stat, alpha = alpha, size = size), shape = 17)+
-  geom_point(data = plot.frame[plot.frame$types != "descriptives",], aes(Position, Pval), size = 3, shape = 17)+ #Manually add the mean traits again so they're on top
+  geom_point(data = plot.frame, aes(Position, Pval, col = stat, alpha = alpha, size = size/2), shape = 17)+
+  geom_point(data = plot.frame[plot.frame$types != "descriptives",], aes(Position, Pval), size = 3/2, shape = 17)+ #Manually add the mean traits again so they're on top
   scale_color_manual(values = c("cyan3","black","red4","#7570B3","magenta","#66A61E","#E6AB02"))+
   scale_alpha_identity() + scale_size_identity()+
   scale_x_continuous(breaks = c(50,100,150,200,250,300,350),expand = c(0,0))+
-  facet_wrap(~ Chromosome, scales = "free_x", nrow = 2) +
+  facet_wrap(~ Chromosome, scales = "free_x", nrow = 1) +
   guides(color=guide_legend(title="",override.aes = list(alpha = 1,size=2),direction = "horizontal"),
          alpha = guide_none(),
          size = guide_none())+
@@ -69,11 +69,11 @@ fig6b.plot <- ggdraw(fig6b.plot) + draw_image("boltinglettuce2.png")
 
 ################################
 fig6AB <- plot_grid(fig6a.plot, fig6b.plot, ncol =2, labels = c("A", "B"))
-fig6ABC <- plot_grid(fig6AB, fig6c, nrow = 2, rel_heights = c(1.5,2), labels = c("", "C"))
+fig6ABC <- plot_grid(fig6AB, fig6c, nrow = 2, rel_heights = c(2,2), labels = c("", "C"))
 fig6ABC
 
 #Two ways to save this image.
-ggsave("Script_per_figure/Figures/figure7ABC.png", width = 15, height = 15, units = "cm" )
+ggsave("Script_per_figure/Figures/figure7ABC.png", width = 15, height = 10, units = "cm" )
 png("Script_per_figure/Figures/figure7abcpng.png", width = 860, height = 580)
 fig6ABC
 dev.off()
