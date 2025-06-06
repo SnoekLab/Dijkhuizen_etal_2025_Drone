@@ -5,6 +5,7 @@ library(cowplot)
 
 #Load in the data
 plot.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Supplemental_data.xlsx", "height.traits")
+plot.frame <- plot.frame[plot.frame$obs != "Diff",]
 load(file="R_objects_plots/obj_drone_ima.rep1_sat_2506_rgb_dsm_msp_red_nd.R4.3.2.out") # The images
 
 ## make pseudo points to get the right facet panel size
