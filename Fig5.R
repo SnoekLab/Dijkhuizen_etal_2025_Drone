@@ -23,18 +23,18 @@ unique(plot.frame$obs)
 ## not needed for mean, seems ordered good enough.
 
 ## add names to clusters 
-clust.name <- plot.frame$mean_clustering
-clust.name[clust.name == "A"] <- "Cluster A: Color change"
-clust.name[clust.name == "B"] <- "Cluster B: Color day 93"
-clust.name[clust.name == "C"] <- "Cluster C: VI"
-clust.name[clust.name == "D"] <- "Cluster D: Green"
-clust.name[clust.name == "E"] <- "Cluster E: Red/Green"
-clust.name[clust.name == "F"] <- "Cluster F: Relative blue"
-clust.name[clust.name == "G"] <- "Cluster G: VI change"
-clust.name[clust.name == "H"] <- "Cluster H: Height"
-clust.name[clust.name == "I"] <- "Cluster I: Relative red"
-clust.name[clust.name == "J"] <- "Cluster J: MSP change"
-plot.frame$mean_clustering <- clust.name
+#clust.name <- plot.frame$mean_clustering
+#clust.name[clust.name == "A"] <- "Cluster A: Color change"
+#clust.name[clust.name == "B"] <- "Cluster B: Color day 93"
+#clust.name[clust.name == "C"] <- "Cluster C: VI"
+#clust.name[clust.name == "D"] <- "Cluster D: Green"
+#clust.name[clust.name == "E"] <- "Cluster E: Red/Green"
+#clust.name[clust.name == "F"] <- "Cluster F: Relative blue"
+#clust.name[clust.name == "G"] <- "Cluster G: VI change"
+#clust.name[clust.name == "H"] <- "Cluster H: Height"
+#clust.name[clust.name == "I"] <- "Cluster I: Relative red"
+#clust.name[clust.name == "J"] <- "Cluster J: MSP change"
+#plot.frame$mean_clustering <- clust.name
 
 
 ## make pseudo points to get the right facet panel size
