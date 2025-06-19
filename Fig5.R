@@ -80,7 +80,7 @@ fig5
 
 rectangles.hist <-rectangles[!is.na(rectangles$label),]
 rectangles.hist$ymin <- rep(0 , dim(rectangles.hist)[1])
-rectangles.hist$ymax <- c(13,13, 36, 13, 10, 10, 16, 20, 46, 13, 32, 13, 11, 38)
+rectangles.hist$ymax <- c(10,10, 33, 13, 8, 8, 16, 20, 38, 16,14, 32, 13, 13, 38)
 ### add histogram
 fig5.2 <- ggplot()+
   geom_point(data = pseudo.points,aes(Position,Pval),col=NA)+
