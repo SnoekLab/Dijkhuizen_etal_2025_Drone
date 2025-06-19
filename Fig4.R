@@ -17,6 +17,7 @@ Trait <- c(rep("Height",nrow(height.frame)),rep("G/B ratio",nrow(gbrat.frame)),r
 
 # bind all together in one data frame
 all.frames <- rbind(height.frame,gbrat.frame,rededge.frame)
+all.frames$pval <- -log10(all.frames$pval)
 
 ## make pseudo points to get the right facet panle size
 pseudo.points <- data.frame(cbind(rep(1:9,2),rep(2,18),c(rep(0,9),214.8,217.1,257.8,377.4,339.6,193.1,195.5,309.6,203.9)))
