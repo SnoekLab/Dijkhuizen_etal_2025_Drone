@@ -5,6 +5,7 @@ library(openxlsx)
 library(cowplot)
 library(viridis)
 library(stringr)
+library(readxl)
 
 plot.frame <- read.xlsx(xlsxFile =  "D:/Drone-paper/Supplemental_data.xlsx", "pvalues")
 plot.frame <- subset(plot.frame, select = -c(all_clustering))
@@ -20,9 +21,13 @@ obs[grepl("diff",plot.frame$Phenotype)] <- "Diff"
 plot.frame$obs <- obs
 unique(plot.frame$obs)
 
+#### Now do all chromosomes
+threshold = 7
+window = 2.5
+half.window = window / 2
+minima.traits = 3
 
-#### Loop over all chromosomes and see where at least 3 SNPs meet the threshold
-threshold = 8
+
 peaks <- data.frame(matrix(nrow = 0 , ncol = 8))
 for (chromosome in unique(plot.frame$Chromosome)){
   print(chromosome)
@@ -30,24 +35,24 @@ for (chromosome in unique(plot.frame$Chromosome)){
   
   for (row in 1:nrow(subframe)){
     row <- subframe[row,]
-    if (row$Pval > threshold){
+    if (row$Pval >= threshold + 1){
       pos <- row$Position
-      # Check if there are at least 2 SNPs with a value above 10 within 5 mbp
-      window <- subframe[subframe$Position > pos -2.5 & subframe$Position < pos +2.5,]
+      # Check if there are at least multiple traits in the window
+      window <- subframe[subframe$Position > pos - half.window & subframe$Position < pos + half.window,]
       window <- window[window$Pval > threshold,]
-      if (length(window$Phenotype) >= 3){
+      if (length(unique(window$Phenotype)) >= minima.traits) {
         max.pos <- window[window$Pval == max(window$Pval),]
         max.pos <- max.pos[1,] # In case of identical points
         pos <- max.pos$Position
         b.window <- subframe[subframe$Position > pos -10 & subframe$Position < pos +10,]
-        b.window <- b.window[b.window$Pval > threshold,]
+        b.window <- b.window[b.window$Pval >= threshold,]
         l.bound <- b.window[b.window$Position == min(b.window$Position),][1,]$Position # lower bound
         u.bound <- b.window[b.window$Position == max(b.window$Position),][1,]$Position # upper bound
-        # Now join peaks within each others lower and upper bounds
+        # The window for looking for lower and upper boundaries is larger than the initial window.
+        # So in case we find a new most significant SNP here we run this code again with the new window.
         window <- subframe[subframe$Position >= l.bound & # Draw new window to get all involved clusters
                              subframe$Position <= u.bound & 
                              subframe$Pval > threshold,]
-        #clusters <- toString(unique(window$all_clustering))
         max.pos <- window[window$Pval == max(window$Pval),]
         max.pos <- max.pos[1,]
         pos <- max.pos$Position
@@ -65,6 +70,7 @@ for (chromosome in unique(plot.frame$Chromosome)){
         locus <- c(phenotype,phenotypes, Chromosome, Position, Pval, l.bound, u.bound, clusters)
         
         peaks <- rbind(peaks, locus)
+        
       }
     }
   }
