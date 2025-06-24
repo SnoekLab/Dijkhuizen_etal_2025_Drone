@@ -82,4 +82,4 @@ colnames(peaks) <- c("Phenotype", "Phenotypes", "Chromosome", "Position",
                      "Pval", "l.bound", "u.bound", "clusters")
 peaks$Position <- as.numeric(peaks$Position)
 View(peaks)
-write.csv(peaks, "QTLsfigall.csv")
+write.csv(peaks, "QTLsall.csv")
