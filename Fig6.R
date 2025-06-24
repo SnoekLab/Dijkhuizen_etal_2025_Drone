@@ -23,7 +23,7 @@ plot.frame$size[plot.frame$types == "descriptives"] <- 2.5
 fig6c <- ggplot()+
   geom_point(data = pseudo.points,aes(Position,Pval),col=NA)+
   geom_point(data = plot.frame, aes(Position, Pval, col = stat, alpha = alpha, size = size/2), shape = 17)+
-  geom_point(data = plot.frame[plot.frame$types != "descriptives",], aes(Position, Pval), size = 3/2, shape = 17)+ #Manually add the mean traits again so they're on top
+  geom_point(data = plot.frame[plot.frame$types != "descriptives",], aes(Position, Pval), size = 1, shape = 17)+ #Manually add the mean traits again so they're on top
   scale_color_manual(values = c("cyan3","black","red4","#7570B3","magenta","#66A61E","#E6AB02"))+
   scale_alpha_identity() + scale_size_identity()+
   scale_x_continuous(breaks = c(50,100,150,200,250,300,350),expand = c(0,0))+
