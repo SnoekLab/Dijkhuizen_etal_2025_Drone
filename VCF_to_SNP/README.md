@@ -1,9 +1,7 @@
 # Lac_SNPs
 ### *Lactuca sativa* SNP Processing
 
-For eGWAS a matrix with integers indicating allele status (REF/HET/ALT) is needed. To make these the combined VCF file needs to be processed and reformatted.
-
-- The VCF file was obtained from: research-lettuceknow/processed_data/03_variant-calling_V1_20220621/combined_vcf
+For GWAS (and eGWAS) a matrix with integers indicating allele status (REF/HET/ALT) is needed. To make these the combined VCF file needs to be processed and reformatted.
 
 ##### Split Sativa and Serriola 
 The combined VCF was split over sativa and serriola, both to their own VCF. These VCFs were filtered for only bi-allelic SNPs.
@@ -55,4 +53,5 @@ LK001 and further: Allele status per LK accession (0 = REF ; 1 = HET ; 2 = ALT ;
 ##### SNPs with poor linkage  
 Some SNPs could still be potential FALSE positive and cause unwanted behaviour in GWAS. These SNPs can cause single SNPs to be linked to variation in a phenotype with non or the neighbouring SNPs to be linked as well. To screen for this the local linkage was calculated by taking a SNP and obtaining the correlation with the 500 SNPs to both sides (so 1000 in total). Then the Q80,Q90,Q95,Q99 were obtained, descibing the local linkage. These numbers can be used to filter or screen for later.   
 Script: *SNP_correl.R*
- 
+
+##### Filter for HET before use
