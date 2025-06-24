@@ -1,4 +1,4 @@
-# Script to create supplemental figure 8.
+# Script to create supplemental figure showing the QTLs using all extended descriptives
 library(ggplot2)
 library(openxlsx)
 library(cowplot)

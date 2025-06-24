@@ -1,4 +1,4 @@
-# Script to create supplemental figure 6.
+# Script to create supplemental figure for the height traits.
 # Note that while in most of the paper we use the log2 fold change here we use the absolute change.
 library(openxlsx)
 library(cowplot)
