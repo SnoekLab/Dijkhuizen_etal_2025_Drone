@@ -66,7 +66,7 @@ inputs: "Supplemental_data.xlsx", the two example images of the bolting lettuce 
 <br>
 ***Supp_Fig6*** &emsp; Script to generate supplemental figure comparing height traits<br>
 inputs: "Supplemental_data.xlsx" <br>
-***Supp_Fig8*** &emsp; Script to generate supplemental figure 8, also optionally generates the clustering on all traits (not just the mean traits like in Fig3.R). <br>
+***Supp_Fig8*** &emsp; Script to generate supplemental figure 9, also optionally generates the clustering on all traits (not just the mean traits like in Fig3.R). <br>
 inputs: "Supplemental_data.xlsx" <br>
 
 ## Extra
