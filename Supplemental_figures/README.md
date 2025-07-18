@@ -22,9 +22,9 @@ Shows GWAS with unclumped and unbinned SNPs for 5 traits. For comparison with cl
 Supplementary Figure 8 <br>
 Compares heritability from our ANOVA approach and the more established lme4 approach. Both approaches produce the exact same results <br>
 
-### *TBD.R*
+### *ExtendedGWAS.R*
 Supplementary Figure 9 <br>
-TBD <br>
+Plots the GWAS with ALL extended descriptives. <br>
 
 ### *SuppFigGBrat.R*
 Supplementary Figure 10 <br>
